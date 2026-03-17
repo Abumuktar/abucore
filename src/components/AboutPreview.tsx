@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import founderImg from "@/assets/founder.jpg";
+import founderImg from "@/assets/founder.png";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
