@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FileText, Armchair, Printer, HardHat, Fuel, Shirt, Wheat, HeartPulse } from "lucide-react";
+import { FileText, Armchair, Printer, HardHat, Fuel, Shirt, Wheat, HeartPulse, ArrowUpRight } from "lucide-react";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -16,14 +16,25 @@ const services = [
 
 const ServicesGrid = () => {
   return (
-    <section className="py-24 md:py-32 bg-background">
+    <section className="py-20 md:py-28 bg-background">
       <div className="container">
-        <div className="text-center mb-16">
-          <span className="text-gold text-xs tracking-[2px] uppercase font-body font-semibold">Our Services</span>
-          <h2 className="font-display text-3xl md:text-4xl text-foreground mt-3">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease }}
+          className="text-center mb-14"
+        >
+          <span className="inline-flex items-center gap-2 text-gold text-xs tracking-[2px] uppercase font-semibold bg-gold/10 rounded-full px-4 py-1.5 mb-4">
+            Our Services
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground">
             What We Supply & Deliver
           </h2>
-        </div>
+          <p className="text-muted-foreground mt-4 max-w-lg mx-auto text-sm sm:text-base">
+            From stationery to civil works, we provide end-to-end supply and contracting solutions.
+          </p>
+        </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {services.map((service, i) => (
@@ -31,17 +42,21 @@ const ServicesGrid = () => {
               key={service.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 0.6, ease, delay: i * 0.08 }}
-              className="group bg-surface p-6 border-b-[3px] border-gold hover:-translate-y-1 transition-transform duration-300"
+              viewport={{ once: true, margin: "-5%" }}
+              transition={{ duration: 0.5, ease, delay: i * 0.06 }}
+              className="group relative bg-background border border-border rounded-2xl p-6 hover:shadow-card hover:border-gold/30 transition-all duration-500 cursor-pointer overflow-hidden"
             >
-              <div className="w-11 h-11 bg-navy flex items-center justify-center mb-4">
+              <div className="absolute top-0 left-0 right-0 h-1 gradient-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-t-2xl" />
+              <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors duration-300">
                 <service.icon className="w-5 h-5 text-gold" />
               </div>
-              <h4 className="text-sm font-semibold text-foreground font-body mb-2">{service.title}</h4>
-              <p className="text-xs text-muted-foreground font-body leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h4 className="text-sm font-semibold text-foreground mb-2">{service.title}</h4>
+              <p className="text-xs text-muted-foreground leading-relaxed">
                 {service.desc}
               </p>
+              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <ArrowUpRight className="w-4 h-4 text-gold" />
+              </div>
             </motion.div>
           ))}
         </div>

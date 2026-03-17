@@ -1,57 +1,105 @@
 import { Link } from "react-router-dom";
+import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
+
+const footerLinks = {
+  "Quick Links": [
+    { label: "Home", path: "/" },
+    { label: "About Us", path: "/about" },
+    { label: "Services", path: "/services" },
+    { label: "Who We Serve", path: "/who-we-serve" },
+    { label: "Contact", path: "/contact" },
+  ],
+  Services: [
+    { label: "Stationery Supply" },
+    { label: "Furniture Supply" },
+    { label: "Civil Works" },
+    { label: "Printing & Branding" },
+    { label: "Diesel Supply" },
+  ],
+};
 
 const Footer = () => {
   return (
-    <footer className="bg-navy">
-      <div className="container py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-primary-foreground/10">
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 bg-gold flex items-center justify-center" style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}>
-                <span className="text-[10px] font-bold text-navy font-body">A</span>
+    <footer className="gradient-navy">
+      <div className="container pt-16 pb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-primary-foreground/10">
+          {/* Brand */}
+          <div className="sm:col-span-2 lg:col-span-1">
+            <div className="flex items-center gap-2.5 mb-5">
+              <div className="w-9 h-9 gradient-gold rounded-lg flex items-center justify-center">
+                <span className="text-xs font-extrabold text-navy">A</span>
               </div>
-              <span className="text-primary-foreground font-bold text-sm tracking-wide font-body">ABUCORE ENTERPRISES LIMITED</span>
+              <div>
+                <span className="text-primary-foreground font-bold text-sm tracking-wide block leading-none">
+                  ABUCORE
+                </span>
+                <span className="text-primary-foreground/40 text-[9px] tracking-[2px] uppercase">
+                  Enterprises
+                </span>
+              </div>
             </div>
-            <p className="text-primary-foreground/50 text-sm font-body leading-relaxed">
-              Your trusted partner for supply, logistics, and general contracting. Serving government agencies and private organizations nationwide.
+            <p className="text-primary-foreground/50 text-sm leading-relaxed max-w-xs">
+              Your trusted partner for supply, logistics, and general contracting across Nigeria.
             </p>
           </div>
 
-          <div>
-            <h4 className="text-gold text-xs tracking-[2px] uppercase font-body font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              {["Home", "About Us", "Services", "Who We Serve", "Contact"].map((item) => (
-                <li key={item}>
-                  <Link to={item === "Home" ? "/" : `/${item.toLowerCase().replace(/\s+/g, "-")}`} className="text-primary-foreground/50 text-sm font-body hover:text-gold transition-colors">
-                    {item}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Links */}
+          {Object.entries(footerLinks).map(([title, links]) => (
+            <div key={title}>
+              <h4 className="text-gold text-xs tracking-[2px] uppercase font-semibold mb-5">
+                {title}
+              </h4>
+              <ul className="space-y-3">
+                {links.map((item) => (
+                  <li key={item.label}>
+                    {"path" in item ? (
+                      <Link
+                        to={item.path}
+                        className="text-primary-foreground/50 text-sm hover:text-gold transition-colors duration-300 inline-flex items-center gap-1 group"
+                      >
+                        {item.label}
+                        <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </Link>
+                    ) : (
+                      <span className="text-primary-foreground/50 text-sm">
+                        {item.label}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
+          {/* Contact */}
           <div>
-            <h4 className="text-gold text-xs tracking-[2px] uppercase font-body font-semibold mb-4">Services</h4>
-            <ul className="space-y-2">
-              {["Stationery Supply", "Furniture Supply", "Civil Works", "Printing & Branding", "Diesel Supply"].map((item) => (
-                <li key={item} className="text-primary-foreground/50 text-sm font-body">{item}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-gold text-xs tracking-[2px] uppercase font-body font-semibold mb-4">Contact</h4>
-            <ul className="space-y-2">
-              <li className="text-primary-foreground/50 text-sm font-body">07079462587</li>
-              <li className="text-primary-foreground/50 text-sm font-body">abucoreenterprises@gmail.com</li>
-              <li className="text-primary-foreground/50 text-sm font-body">Katsina State, Nigeria</li>
+            <h4 className="text-gold text-xs tracking-[2px] uppercase font-semibold mb-5">
+              Contact
+            </h4>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <Phone className="w-4 h-4 text-gold mt-0.5 shrink-0" />
+                <span className="text-primary-foreground/50 text-sm">07079462587</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Mail className="w-4 h-4 text-gold mt-0.5 shrink-0" />
+                <span className="text-primary-foreground/50 text-sm break-all">abucoreenterprises@gmail.com</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-gold mt-0.5 shrink-0" />
+                <span className="text-primary-foreground/50 text-sm">Katsina State, Nigeria</span>
+              </li>
             </ul>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center pt-6 gap-4">
-          <p className="text-primary-foreground/30 text-xs font-body">© 2026 Abucore Enterprises Limited. All rights reserved.</p>
-          <span className="text-gold text-xs font-body">Supply · Logistics · General Contracting</span>
+        <div className="flex flex-col sm:flex-row justify-between items-center pt-6 gap-4">
+          <p className="text-primary-foreground/30 text-xs">
+            © 2026 Abucore Enterprises Limited. All rights reserved.
+          </p>
+          <span className="text-gold/50 text-xs font-medium tracking-wider">
+            Supply · Logistics · General Contracting
+          </span>
         </div>
       </div>
     </footer>
