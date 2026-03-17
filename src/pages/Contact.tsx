@@ -1,149 +1,187 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageHero from "@/components/PageHero";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle, ArrowRight, Clock } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
+const contactInfo = [
+  { icon: Phone, label: "Phone / WhatsApp", value: "07079462587", href: "tel:+2347079462587" },
+  { icon: Mail, label: "Email Address", value: "abucoreenterprises@gmail.com", href: "mailto:abucoreenterprises@gmail.com" },
+  { icon: MapPin, label: "Office Location", value: "Katsina State, Nigeria", href: null },
+  { icon: Clock, label: "Response Time", value: "Within 24 hours", href: null },
+];
+
 const Contact = () => {
   const { toast } = useToast();
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: "Message Sent", description: "Thank you! We'll respond within 24 hours." });
-    setForm({ name: "", email: "", phone: "", message: "" });
+    toast({ title: "Message Sent!", description: "Thank you! We'll respond within 24 hours." });
+    setForm({ name: "", email: "", phone: "", service: "", message: "" });
   };
 
   return (
     <div className="min-h-screen">
       <Header />
+      <PageHero
+        label="Get in Touch"
+        title="Contact Abucore"
+        description="Have a project? Need a quote? We're ready to help you get started."
+      />
 
-      <section className="bg-navy py-20 md:py-28">
+      <section className="py-20 md:py-28 bg-background">
         <div className="container">
-          <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-gold text-xs tracking-[2px] uppercase font-body font-semibold">
-            Get in Touch
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease }}
-            className="font-display text-4xl md:text-5xl text-primary-foreground mt-3 max-w-xl"
-          >
-            Contact Abucore
-          </motion.h1>
-        </div>
-      </section>
-
-      <section className="py-24 bg-background">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
             {/* Form */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease }}
+              className="lg:col-span-3"
             >
-              <h2 className="font-display text-2xl text-foreground mb-6">Request a Quote</h2>
+              <h2 className="font-display text-2xl md:text-3xl text-foreground mb-2">
+                Request a Quote
+              </h2>
+              <p className="text-muted-foreground text-sm mb-8">
+                Fill out the form below and our team will get back to you within 24 hours.
+              </p>
+
               <form onSubmit={handleSubmit} className="space-y-5">
-                <div>
-                  <label className="text-xs uppercase tracking-[1px] text-muted-foreground font-body font-semibold mb-1.5 block">Full Name</label>
-                  <input
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full border border-border bg-background px-4 py-3 text-sm font-body text-foreground focus:outline-none focus:border-gold transition-colors"
-                  />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="text-xs uppercase tracking-[1px] text-muted-foreground font-body font-semibold mb-1.5 block">Email</label>
+                    <label className="text-xs uppercase tracking-[1px] text-muted-foreground font-semibold mb-2 block">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={form.name}
+                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      placeholder="Your full name"
+                      className="w-full border border-border bg-background px-4 py-3.5 text-sm rounded-xl text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-xs uppercase tracking-[1px] text-muted-foreground font-semibold mb-2 block">
+                      Email *
+                    </label>
                     <input
                       type="email"
                       required
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      className="w-full border border-border bg-background px-4 py-3 text-sm font-body text-foreground focus:outline-none focus:border-gold transition-colors"
+                      placeholder="your@email.com"
+                      className="w-full border border-border bg-background px-4 py-3.5 text-sm rounded-xl text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
                     />
                   </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="text-xs uppercase tracking-[1px] text-muted-foreground font-body font-semibold mb-1.5 block">Phone</label>
+                    <label className="text-xs uppercase tracking-[1px] text-muted-foreground font-semibold mb-2 block">
+                      Phone Number
+                    </label>
                     <input
                       type="tel"
                       value={form.phone}
                       onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      className="w-full border border-border bg-background px-4 py-3 text-sm font-body text-foreground focus:outline-none focus:border-gold transition-colors"
+                      placeholder="+234..."
+                      className="w-full border border-border bg-background px-4 py-3.5 text-sm rounded-xl text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
                     />
+                  </div>
+                  <div>
+                    <label className="text-xs uppercase tracking-[1px] text-muted-foreground font-semibold mb-2 block">
+                      Service Needed
+                    </label>
+                    <select
+                      value={form.service}
+                      onChange={(e) => setForm({ ...form, service: e.target.value })}
+                      className="w-full border border-border bg-background px-4 py-3.5 text-sm rounded-xl text-foreground focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
+                    >
+                      <option value="">Select a service</option>
+                      <option>Stationery & Office Supply</option>
+                      <option>Furniture Supply</option>
+                      <option>Printing & Branding</option>
+                      <option>Civil Works</option>
+                      <option>Diesel & Fuel Supply</option>
+                      <option>Uniforms & Workwear</option>
+                      <option>Agricultural Inputs</option>
+                      <option>Medical Consumables</option>
+                      <option>Other</option>
+                    </select>
                   </div>
                 </div>
                 <div>
-                  <label className="text-xs uppercase tracking-[1px] text-muted-foreground font-body font-semibold mb-1.5 block">Message</label>
+                  <label className="text-xs uppercase tracking-[1px] text-muted-foreground font-semibold mb-2 block">
+                    Message *
+                  </label>
                   <textarea
                     rows={5}
                     required
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="w-full border border-border bg-background px-4 py-3 text-sm font-body text-foreground focus:outline-none focus:border-gold transition-colors resize-none"
+                    placeholder="Tell us about your project or requirements..."
+                    className="w-full border border-border bg-background px-4 py-3.5 text-sm rounded-xl text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all resize-none"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="bg-gold text-navy px-7 py-3.5 font-bold text-sm font-body hover:bg-gold-light transition-colors duration-200 w-full md:w-auto"
+                  className="inline-flex items-center justify-center gap-2 gradient-gold text-navy px-8 py-4 font-semibold text-sm rounded-xl hover:shadow-glow transition-all duration-300 group w-full sm:w-auto"
                 >
                   Send Message
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </button>
               </form>
             </motion.div>
 
             {/* Contact Info */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease, delay: 0.15 }}
-              className="space-y-8"
+              className="lg:col-span-2 space-y-5"
             >
-              <h2 className="font-display text-2xl text-foreground mb-6">Contact Information</h2>
+              <h2 className="font-display text-2xl md:text-3xl text-foreground mb-2">
+                Contact Info
+              </h2>
+              <p className="text-muted-foreground text-sm mb-8">
+                Reach out through any of these channels.
+              </p>
 
-              <div className="flex gap-4 items-start">
-                <div className="w-11 h-11 bg-navy flex items-center justify-center shrink-0">
-                  <Phone className="w-5 h-5 text-gold" />
-                </div>
-                <div>
-                  <h4 className="font-body font-semibold text-foreground text-sm mb-1">Phone / WhatsApp</h4>
-                  <p className="text-muted-foreground font-body text-sm">07079462587</p>
-                </div>
+              <div className="space-y-4">
+                {contactInfo.map((c) => (
+                  <div
+                    key={c.label}
+                    className="flex items-start gap-4 p-4 bg-muted/50 rounded-xl border border-border hover:border-gold/20 transition-all"
+                  >
+                    <div className="w-11 h-11 rounded-xl bg-gold/10 flex items-center justify-center shrink-0">
+                      <c.icon className="w-5 h-5 text-gold" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground uppercase tracking-wider font-medium">{c.label}</p>
+                      {c.href ? (
+                        <a href={c.href} className="text-foreground text-sm font-medium hover:text-gold transition-colors">
+                          {c.value}
+                        </a>
+                      ) : (
+                        <p className="text-foreground text-sm font-medium">{c.value}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
 
-              <div className="flex gap-4 items-start">
-                <div className="w-11 h-11 bg-navy flex items-center justify-center shrink-0">
-                  <Mail className="w-5 h-5 text-gold" />
-                </div>
-                <div>
-                  <h4 className="font-body font-semibold text-foreground text-sm mb-1">Email</h4>
-                  <p className="text-muted-foreground font-body text-sm">abucoreenterprises@gmail.com</p>
-                </div>
-              </div>
-
-              <div className="flex gap-4 items-start">
-                <div className="w-11 h-11 bg-navy flex items-center justify-center shrink-0">
-                  <MapPin className="w-5 h-5 text-gold" />
-                </div>
-                <div>
-                  <h4 className="font-body font-semibold text-foreground text-sm mb-1">Office Address</h4>
-                  <p className="text-muted-foreground font-body text-sm">Katsina State, Nigeria</p>
-                </div>
-              </div>
-
-              {/* WhatsApp CTA */}
               <a
                 href="https://wa.me/2347079462587"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-navy text-primary-foreground px-6 py-3.5 font-bold text-sm font-body hover:bg-navy-light transition-colors duration-200"
+                className="flex items-center justify-center gap-3 gradient-navy text-primary-foreground px-6 py-4 rounded-xl font-semibold text-sm hover:shadow-soft transition-all duration-300 mt-6"
               >
+                <MessageCircle className="w-5 h-5 text-gold" />
                 Chat on WhatsApp
               </a>
             </motion.div>
