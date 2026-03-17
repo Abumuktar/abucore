@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
 import { motion } from "framer-motion";
 
-const ease = [0.16, 1, 0.3, 1];
+const ease = [0.16, 1, 0.3, 1] as const;
 
 const values = [
   { title: "Integrity", desc: "We operate with transparency and honesty in every transaction." },

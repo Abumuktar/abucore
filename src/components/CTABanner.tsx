@@ -13,7 +13,7 @@ const CTABanner = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
           className="font-display text-3xl md:text-4xl text-primary-foreground mb-4"
         >
           Ready to Work With <span className="text-gold">Abucore?</span>

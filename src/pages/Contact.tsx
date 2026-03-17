@@ -5,7 +5,7 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
-const ease = [0.16, 1, 0.3, 1];
+const ease = [0.16, 1, 0.3, 1] as const;
 
 const Contact = () => {
   const { toast } = useToast();

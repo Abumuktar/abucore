@@ -4,7 +4,7 @@ import CTABanner from "@/components/CTABanner";
 import { motion } from "framer-motion";
 import { Building2, Landmark, School, HeartPulse, Globe, Briefcase, Users } from "lucide-react";
 
-const ease = [0.16, 1, 0.3, 1];
+const ease = [0.16, 1, 0.3, 1] as const;
 
 const clients = [
   { icon: Landmark, title: "Federal MDAs", desc: "Ministries, Departments, and Agencies at the federal level requiring supply and procurement partners." },

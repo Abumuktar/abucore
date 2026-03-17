@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Shield, Clock, Handshake, MapPin } from "lucide-react";
 
-const ease = [0.16, 1, 0.3, 1];
+const ease = [0.16, 1, 0.3, 1] as const;
 
 const reasons = [
   { icon: Shield, title: "Trusted & Verified", desc: "Fully registered with CAC. Tax-compliant. Ready for government procurement." },

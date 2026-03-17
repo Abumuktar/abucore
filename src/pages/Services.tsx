@@ -4,7 +4,7 @@ import CTABanner from "@/components/CTABanner";
 import { motion } from "framer-motion";
 import { FileText, Armchair, Printer, HardHat, Fuel, Shirt, Wheat, HeartPulse } from "lucide-react";
 
-const ease = [0.16, 1, 0.3, 1];
+const ease = [0.16, 1, 0.3, 1] as const;
 
 const services = [
   { icon: FileText, title: "Stationery & Office Supply", desc: "Complete range of office supplies including paper, pens, files, folders, toners, and all stationery items needed by government offices and private organizations." },
