@@ -1,59 +1,57 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
+import PageHero from "@/components/PageHero";
 import { motion } from "framer-motion";
-import { Building2, Landmark, School, HeartPulse, Globe, Briefcase, Users } from "lucide-react";
+import { Building2, Landmark, School, HeartPulse, Globe, Briefcase, Users, CheckCircle2 } from "lucide-react";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const clients = [
-  { icon: Landmark, title: "Federal MDAs", desc: "Ministries, Departments, and Agencies at the federal level requiring supply and procurement partners." },
-  { icon: Building2, title: "State Government Ministries", desc: "State-level ministries and parastatals across Nigeria, with a strong presence in Katsina State." },
-  { icon: Users, title: "LGA Secretariats", desc: "Local Government Area secretariats and offices across 34+ LGAs in Katsina and neighboring states." },
-  { icon: School, title: "SUBEB & Education Sector", desc: "State Universal Basic Education Boards and educational institutions requiring supplies and infrastructure." },
-  { icon: HeartPulse, title: "Hospitals & Health Sector", desc: "Government hospitals, primary health centres, and healthcare facilities needing medical consumables." },
-  { icon: Briefcase, title: "Private Corporations", desc: "Private companies and businesses seeking reliable supply chain and contracting partners." },
-  { icon: Globe, title: "NGOs & International Orgs", desc: "Non-governmental and international organizations operating development programs in Northern Nigeria." },
+  { icon: Landmark, title: "Federal MDAs", desc: "Ministries, Departments, and Agencies at the federal level requiring supply and procurement partners.", tags: ["Federal Government", "MDAs"] },
+  { icon: Building2, title: "State Government Ministries", desc: "State-level ministries and parastatals across Nigeria, with a strong presence in Katsina State.", tags: ["State Level", "Katsina"] },
+  { icon: Users, title: "LGA Secretariats", desc: "Local Government Area secretariats and offices across 34+ LGAs in Katsina and neighboring states.", tags: ["34+ LGAs", "Local Govt"] },
+  { icon: School, title: "SUBEB & Education Sector", desc: "State Universal Basic Education Boards and educational institutions requiring supplies and infrastructure.", tags: ["Education", "SUBEB"] },
+  { icon: HeartPulse, title: "Hospitals & Health Sector", desc: "Government hospitals, primary health centres, and healthcare facilities needing medical consumables.", tags: ["Healthcare", "PHCs"] },
+  { icon: Briefcase, title: "Private Corporations", desc: "Private companies and businesses seeking reliable supply chain and contracting partners.", tags: ["Corporate", "Private"] },
+  { icon: Globe, title: "NGOs & International Orgs", desc: "Non-governmental and international organizations operating development programs in Northern Nigeria.", tags: ["NGOs", "Development"] },
 ];
 
 const WhoWeServe = () => {
   return (
     <div className="min-h-screen">
       <Header />
+      <PageHero
+        label="Our Clients"
+        title="Who We Serve"
+        description="Trusted by government agencies, private corporations, and international organizations across Nigeria."
+      />
 
-      <section className="bg-navy py-20 md:py-28">
+      <section className="py-20 md:py-28 bg-background">
         <div className="container">
-          <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-gold text-xs tracking-[2px] uppercase font-body font-semibold">
-            Our Clients
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease }}
-            className="font-display text-4xl md:text-5xl text-primary-foreground mt-3 max-w-xl"
-          >
-            Who We Serve
-          </motion.h1>
-        </div>
-      </section>
-
-      <section className="py-24 bg-background">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {clients.map((c, i) => (
               <motion.div
                 key={c.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, ease, delay: i * 0.08 }}
-                className="p-6 bg-surface border-b-[3px] border-gold"
+                transition={{ duration: 0.5, ease, delay: i * 0.06 }}
+                className="group bg-background border border-border rounded-2xl p-6 sm:p-8 hover:shadow-card hover:border-gold/20 transition-all duration-500"
               >
-                <div className="w-12 h-12 bg-navy flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-5 group-hover:bg-gold/20 transition-colors">
                   <c.icon className="w-5 h-5 text-gold" />
                 </div>
-                <h3 className="font-body font-semibold text-foreground mb-2">{c.title}</h3>
-                <p className="text-sm text-muted-foreground font-body leading-relaxed">{c.desc}</p>
+                <h3 className="font-semibold text-foreground text-lg mb-2">{c.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">{c.desc}</p>
+                <div className="flex flex-wrap gap-2">
+                  {c.tags.map((tag) => (
+                    <span key={tag} className="inline-flex items-center gap-1 text-[11px] font-medium text-gold bg-gold/10 rounded-full px-3 py-1">
+                      <CheckCircle2 className="w-3 h-3" />
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </motion.div>
             ))}
           </div>

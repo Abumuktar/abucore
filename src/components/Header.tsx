@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -13,58 +13,86 @@ const navLinks = [
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 bg-navy border-b border-navy-light">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "glass-dark border-b border-primary-foreground/10 shadow-soft"
+          : "bg-transparent"
+      }`}
+    >
       <div className="container flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="flex items-center gap-3">
-          <div className="w-9 h-9 bg-gold flex items-center justify-center" style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}>
-            <span className="text-xs font-bold text-navy font-body">A</span>
+        <Link to="/" className="flex items-center gap-2.5 group">
+          <div className="w-9 h-9 gradient-gold rounded-lg flex items-center justify-center shadow-glow transition-shadow duration-300 group-hover:shadow-[0_0_50px_-10px_hsl(var(--gold)/0.5)]">
+            <span className="text-xs font-extrabold text-navy">A</span>
           </div>
-          <span className="text-primary-foreground font-bold text-lg tracking-wide font-body">ABUCORE</span>
+          <div className="flex flex-col">
+            <span className="text-primary-foreground font-bold text-base tracking-wide leading-none">
+              ABUCORE
+            </span>
+            <span className="text-primary-foreground/40 text-[9px] tracking-[3px] uppercase leading-none mt-0.5 hidden sm:block">
+              Enterprises
+            </span>
+          </div>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden lg:flex items-center gap-1">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`text-sm font-body transition-colors duration-200 ${
+              className={`relative px-4 py-2 text-[13px] font-medium rounded-lg transition-all duration-300 ${
                 location.pathname === link.path
-                  ? "text-gold font-semibold"
-                  : "text-primary-foreground/70 hover:text-gold"
+                  ? "text-gold"
+                  : "text-primary-foreground/70 hover:text-primary-foreground hover:bg-primary-foreground/5"
               }`}
             >
               {link.label}
+              {location.pathname === link.path && (
+                <motion.div
+                  layoutId="activeNav"
+                  className="absolute bottom-0 left-4 right-4 h-0.5 gradient-gold rounded-full"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
             </Link>
           ))}
         </nav>
 
         <Link
           to="/contact"
-          className="hidden md:inline-flex bg-gold text-navy px-5 py-2.5 text-sm font-bold font-body tracking-wide hover:bg-gold-light transition-colors duration-200"
+          className="hidden lg:inline-flex items-center gap-2 gradient-gold text-navy px-5 py-2.5 text-[13px] font-semibold rounded-lg hover:shadow-glow transition-all duration-300 group"
         >
           Get a Quote
+          <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
         </Link>
 
         <button
-          className="md:hidden text-primary-foreground"
+          className="lg:hidden text-primary-foreground p-2 rounded-lg hover:bg-primary-foreground/10 transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-navy border-t border-navy-light overflow-hidden"
+            className="lg:hidden glass-dark border-t border-primary-foreground/10 overflow-hidden"
           >
             <nav className="container flex flex-col gap-1 py-4">
               {navLinks.map((link) => (
@@ -72,10 +100,10 @@ const Header = () => {
                   key={link.path}
                   to={link.path}
                   onClick={() => setMobileOpen(false)}
-                  className={`py-3 px-4 text-sm font-body transition-colors ${
+                  className={`py-3 px-4 text-sm font-medium rounded-lg transition-all ${
                     location.pathname === link.path
-                      ? "text-gold font-semibold"
-                      : "text-primary-foreground/70 hover:text-gold"
+                      ? "text-gold bg-gold/10"
+                      : "text-primary-foreground/70 hover:text-primary-foreground hover:bg-primary-foreground/5"
                   }`}
                 >
                   {link.label}
@@ -84,7 +112,7 @@ const Header = () => {
               <Link
                 to="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="mt-2 bg-gold text-navy px-5 py-3 text-sm font-bold font-body text-center tracking-wide"
+                className="mt-2 gradient-gold text-navy px-5 py-3 text-sm font-semibold rounded-lg text-center"
               >
                 Get a Quote
               </Link>

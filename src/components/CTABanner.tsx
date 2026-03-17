@@ -1,40 +1,50 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 const CTABanner = () => {
   return (
-    <section className="bg-navy relative overflow-hidden">
-      <div
-        className="absolute top-0 left-0 w-64 h-64 bg-gold/5"
-        style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
-      />
-      <div className="container py-20 md:py-28 relative z-10 text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+    <section className="py-20 md:py-28 bg-background">
+      <div className="container">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
-          className="font-display text-3xl md:text-4xl text-primary-foreground mb-4"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+          className="relative gradient-navy rounded-3xl p-8 sm:p-12 md:p-16 overflow-hidden"
         >
-          Ready to Work With <span className="text-gold">Abucore?</span>
-        </motion.h2>
-        <p className="text-primary-foreground/60 font-body max-w-md mx-auto mb-8">
-          Whether you need a quote, want to register us as a vendor, or simply have questions — we're here.
-        </p>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <Link
-            to="/contact"
-            className="bg-gold text-navy px-7 py-3.5 font-bold text-sm font-body hover:bg-gold-light transition-colors duration-200"
-          >
-            Request a Quote
-          </Link>
-          <Link
-            to="/contact"
-            className="border border-primary-foreground/30 text-primary-foreground px-7 py-3.5 font-semibold text-sm font-body hover:bg-primary-foreground hover:text-navy transition-colors duration-200"
-          >
-            Contact Us
-          </Link>
-        </div>
+          {/* Decorative */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-gold/5 rounded-full blur-2xl" />
+          <div className="absolute top-8 right-8 opacity-10">
+            <Sparkles className="w-24 h-24 text-gold" />
+          </div>
+
+          <div className="relative z-10 max-w-2xl">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-primary-foreground mb-4 leading-tight">
+              Ready to Work With{" "}
+              <span className="text-gold italic">Abucore?</span>
+            </h2>
+            <p className="text-primary-foreground/60 mb-8 max-w-lg text-sm sm:text-base leading-relaxed">
+              Whether you need a quote, want to register us as a vendor, or simply have questions — we're ready to deliver.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 gradient-gold text-navy px-8 py-4 font-semibold text-sm rounded-xl hover:shadow-glow transition-all duration-300 group"
+              >
+                Request a Quote
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 bg-primary-foreground/10 text-primary-foreground px-8 py-4 font-semibold text-sm rounded-xl border border-primary-foreground/20 hover:bg-primary-foreground/15 transition-all duration-300"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
