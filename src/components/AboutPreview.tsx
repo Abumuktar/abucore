@@ -20,7 +20,7 @@ const AboutPreview = () => {
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground leading-tight mb-6">
               Built on Trust.
               <br />
-              <span className="text-gold italic">Driven by Reliability.</span>
+              <span className="text-gold">Driven by Reliability.</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Abucore Enterprises Limited was founded with a clear purpose — to become the most reliable general contracting and supply company serving government agencies and private organizations across Nigeria.
@@ -28,15 +28,15 @@ const AboutPreview = () => {
             <p className="text-muted-foreground leading-relaxed mb-8">
               From stationery supply to civil works, we approach every contract with the same commitment: deliver on time, deliver quality, and build relationships that last.
             </p>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-3 sm:gap-4">
               {[
                 { num: "5+", label: "Years Active" },
                 { num: "34+", label: "LGAs Served" },
                 { num: "100%", label: "Completion" },
               ].map((s) => (
-                <div key={s.label} className="text-center p-4 rounded-xl bg-muted/50 border border-border">
-                  <div className="font-display text-2xl font-bold text-gold">{s.num}</div>
-                  <div className="text-[11px] text-muted-foreground uppercase tracking-wider mt-1">{s.label}</div>
+                <div key={s.label} className="text-center p-3 sm:p-4 rounded-xl bg-muted/50 border border-border">
+                  <div className="font-display text-xl sm:text-2xl font-bold text-gold">{s.num}</div>
+                  <div className="text-[10px] sm:text-[11px] text-muted-foreground uppercase tracking-wider mt-1">{s.label}</div>
                 </div>
               ))}
             </div>
@@ -49,13 +49,16 @@ const AboutPreview = () => {
             transition={{ duration: 0.8, ease, delay: 0.15 }}
             className="relative"
           >
-            <div className="relative rounded-3xl overflow-hidden shadow-elevated">
-              <img
-                src={founderImg}
-                alt="Abubakar Muktar — Founder & Managing Director"
-                className="w-full h-auto object-cover aspect-[4/5]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent" />
+            {/* Founder card with proper image positioning */}
+            <div className="relative rounded-3xl overflow-hidden shadow-elevated bg-muted">
+              <div className="aspect-[3/4] relative">
+                <img
+                  src={founderImg}
+                  alt="Abubakar Muktar — Founder & Managing Director"
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
                 <div className="inline-flex items-center gap-2 bg-gold/20 backdrop-blur-sm rounded-full px-3 py-1 mb-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-gold" />
@@ -66,7 +69,7 @@ const AboutPreview = () => {
                 </h3>
                 <p className="text-gold text-sm font-medium mt-1">Managing Director</p>
                 <p className="text-primary-foreground/60 text-sm leading-relaxed mt-3 max-w-sm">
-                  An entrepreneur with deep roots in Katsina and a vision to build a contracting company known across Nigeria for speed and reliability.
+                  An entrepreneur with deep roots in Katsina building a company known for speed and reliability.
                 </p>
               </div>
             </div>
