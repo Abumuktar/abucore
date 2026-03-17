@@ -4,7 +4,7 @@ import CTABanner from "@/components/CTABanner";
 import PageHero from "@/components/PageHero";
 import { motion } from "framer-motion";
 import { Target, Eye, Heart, Zap } from "lucide-react";
-import founderImg from "@/assets/founder.jpg";
+import founderImg from "@/assets/founder.png";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
