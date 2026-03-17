@@ -162,13 +162,15 @@ const About = () => {
               transition={{ duration: 0.8, ease, delay: 0.15 }}
               className="relative"
             >
-              <div className="rounded-3xl overflow-hidden shadow-elevated">
-                <img
-                  src={founderImg}
-                  alt="Abubakar Muktar"
-                  className="w-full h-auto object-cover aspect-[4/5]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent rounded-3xl" />
+              <div className="relative rounded-3xl overflow-hidden shadow-elevated bg-muted">
+                <div className="aspect-[3/4] relative">
+                  <img
+                    src={founderImg}
+                    alt="Abubakar Muktar"
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent rounded-3xl" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
                   <h3 className="text-primary-foreground text-xl font-display font-bold">
                     Abubakar Muktar
