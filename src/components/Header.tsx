@@ -25,19 +25,27 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background ${
         scrolled
-          ? "glass-dark border-b border-primary-foreground/10 shadow-soft"
-          : "bg-transparent"
+          ? "shadow-soft border-b border-border"
+          : "border-b border-transparent"
       }`}
     >
-      <div className="container flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="flex items-center group">
+      <div className="container flex items-center justify-between h-16 md:h-[72px]">
+        <Link to="/" className="flex items-center gap-2.5">
           <img
             src={logoImg}
             alt="Abucore Enterprises Limited"
-            className="h-10 md:h-12 w-auto brightness-0 invert drop-shadow-sm"
+            className="h-9 md:h-10 w-auto"
           />
+          <div className="hidden sm:block">
+            <span className="text-foreground font-bold text-sm tracking-wide block leading-none">
+              ABUCORE
+            </span>
+            <span className="text-muted-foreground text-[9px] tracking-[1.5px] uppercase">
+              Enterprises
+            </span>
+          </div>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
@@ -48,7 +56,7 @@ const Header = () => {
               className={`relative px-4 py-2 text-[13px] font-medium rounded-lg transition-all duration-300 ${
                 location.pathname === link.path
                   ? "text-gold"
-                  : "text-primary-foreground/70 hover:text-primary-foreground hover:bg-primary-foreground/5"
+                  : "text-foreground/70 hover:text-foreground hover:bg-muted"
               }`}
             >
               {link.label}
@@ -72,7 +80,7 @@ const Header = () => {
         </Link>
 
         <button
-          className="lg:hidden text-primary-foreground p-2 rounded-lg hover:bg-primary-foreground/10 transition-colors"
+          className="lg:hidden text-foreground p-2 rounded-lg hover:bg-muted transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -87,7 +95,7 @@ const Header = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden glass-dark border-t border-primary-foreground/10 overflow-hidden"
+            className="lg:hidden bg-background border-t border-border overflow-hidden"
           >
             <nav className="container flex flex-col gap-1 py-4">
               {navLinks.map((link) => (
@@ -98,7 +106,7 @@ const Header = () => {
                   className={`py-3 px-4 text-sm font-medium rounded-lg transition-all ${
                     location.pathname === link.path
                       ? "text-gold bg-gold/10"
-                      : "text-primary-foreground/70 hover:text-primary-foreground hover:bg-primary-foreground/5"
+                      : "text-foreground/70 hover:text-foreground hover:bg-muted"
                   }`}
                 >
                   {link.label}

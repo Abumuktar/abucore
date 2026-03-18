@@ -41,10 +41,10 @@ const Contact = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease }}
+              transition={{ duration: 0.7, ease }}
               className="lg:col-span-3"
             >
-              <h2 className="font-display text-2xl md:text-3xl text-foreground mb-2">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
                 Request a Quote
               </h2>
               <p className="text-muted-foreground text-sm mb-8">
@@ -63,7 +63,7 @@ const Contact = () => {
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       placeholder="Your full name"
-                      className="w-full border border-border bg-background px-4 py-3.5 text-sm rounded-xl text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
+                      className="w-full border border-border bg-background px-4 py-3.5 text-sm rounded-lg text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
                     />
                   </div>
                   <div>
@@ -76,7 +76,7 @@ const Contact = () => {
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                       placeholder="your@email.com"
-                      className="w-full border border-border bg-background px-4 py-3.5 text-sm rounded-xl text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
+                      className="w-full border border-border bg-background px-4 py-3.5 text-sm rounded-lg text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
                     />
                   </div>
                 </div>
@@ -90,7 +90,7 @@ const Contact = () => {
                       value={form.phone}
                       onChange={(e) => setForm({ ...form, phone: e.target.value })}
                       placeholder="+234..."
-                      className="w-full border border-border bg-background px-4 py-3.5 text-sm rounded-xl text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
+                      className="w-full border border-border bg-background px-4 py-3.5 text-sm rounded-lg text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
                     />
                   </div>
                   <div>
@@ -100,7 +100,7 @@ const Contact = () => {
                     <select
                       value={form.service}
                       onChange={(e) => setForm({ ...form, service: e.target.value })}
-                      className="w-full border border-border bg-background px-4 py-3.5 text-sm rounded-xl text-foreground focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
+                      className="w-full border border-border bg-background px-4 py-3.5 text-sm rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
                     >
                       <option value="">Select a service</option>
                       <option>Stationery & Office Supply</option>
@@ -125,12 +125,12 @@ const Contact = () => {
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     placeholder="Tell us about your project or requirements..."
-                    className="w-full border border-border bg-background px-4 py-3.5 text-sm rounded-xl text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all resize-none"
+                    className="w-full border border-border bg-background px-4 py-3.5 text-sm rounded-lg text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all resize-none"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-2 gradient-gold text-navy px-8 py-4 font-semibold text-sm rounded-xl hover:shadow-glow transition-all duration-300 group w-full sm:w-auto"
+                  className="inline-flex items-center justify-center gap-2 gradient-gold text-navy px-8 py-4 font-semibold text-sm rounded-lg hover:shadow-glow transition-all duration-300 group w-full sm:w-auto"
                 >
                   Send Message
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -142,10 +142,10 @@ const Contact = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease, delay: 0.15 }}
+              transition={{ duration: 0.7, ease, delay: 0.1 }}
               className="lg:col-span-2 space-y-5"
             >
-              <h2 className="font-display text-2xl md:text-3xl text-foreground mb-2">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
                 Contact Info
               </h2>
               <p className="text-muted-foreground text-sm mb-8">
@@ -156,10 +156,10 @@ const Contact = () => {
                 {contactInfo.map((c) => (
                   <div
                     key={c.label}
-                    className="flex items-start gap-4 p-4 bg-muted/50 rounded-xl border border-border hover:border-gold/20 transition-all"
+                    className="flex items-start gap-4 p-4 bg-muted/50 rounded-xl border border-border"
                   >
-                    <div className="w-11 h-11 rounded-xl bg-gold/10 flex items-center justify-center shrink-0">
-                      <c.icon className="w-5 h-5 text-gold" />
+                    <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center shrink-0">
+                      <c.icon className="w-4 h-4 text-gold" />
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground uppercase tracking-wider font-medium">{c.label}</p>
@@ -179,7 +179,7 @@ const Contact = () => {
                 href="https://wa.me/2347079462587"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 gradient-navy text-primary-foreground px-6 py-4 rounded-xl font-semibold text-sm hover:shadow-soft transition-all duration-300 mt-6"
+                className="flex items-center justify-center gap-3 gradient-navy text-primary-foreground px-6 py-4 rounded-lg font-semibold text-sm hover:shadow-soft transition-all duration-300 mt-6"
               >
                 <MessageCircle className="w-5 h-5 text-gold" />
                 Chat on WhatsApp

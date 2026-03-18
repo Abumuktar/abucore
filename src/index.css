@@ -72,20 +72,15 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3 {
-    font-family: 'Outfit', system-ui, sans-serif;
-    letter-spacing: -0.025em;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', system-ui, sans-serif;
     font-weight: 700;
-  }
-
-  h4, h5, h6 {
-    font-family: 'DM Sans', sans-serif;
   }
 }
 
