@@ -7,58 +7,50 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 const PartnershipCTA = () => {
   return (
-    <section className="py-20 md:py-28 bg-muted/50 overflow-hidden">
+    <section className="py-20 md:py-28 bg-background">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease }}
-            className="order-2 lg:order-1"
+            transition={{ duration: 0.7, ease }}
+            className="rounded-2xl overflow-hidden"
           >
-            <div className="rounded-2xl overflow-hidden shadow-elevated">
-              <img
-                src={meetingImg}
-                alt="Business partnership meeting"
-                className="w-full h-auto object-cover aspect-[16/10]"
-              />
-            </div>
+            <img
+              src={meetingImg}
+              alt="Partnership meeting"
+              className="w-full h-auto object-cover aspect-[16/10]"
+            />
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease, delay: 0.1 }}
-            className="order-1 lg:order-2"
+            transition={{ duration: 0.7, ease, delay: 0.1 }}
           >
-            <span className="inline-flex items-center text-gold text-xs tracking-[2px] uppercase font-semibold bg-gold/10 rounded-full px-4 py-1.5 mb-5">
+            <span className="text-gold text-xs tracking-[2px] uppercase font-semibold mb-4 block">
               Partner With Us
             </span>
-            <h2 className="font-display text-3xl md:text-4xl text-foreground leading-tight mb-5">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight mb-5">
               Let's Build Something{" "}
               <span className="text-gold">Together</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Whether you're a government agency looking for a reliable vendor, or a private company needing supply chain support — Abucore is your partner.
+              Whether you're a government agency seeking a reliable supply partner or a private organization looking for a trusted contractor, Abucore is ready to deliver.
             </p>
-            <ul className="space-y-3 mb-8">
-              {[
-                "Vendor registration support",
-                "Dedicated account management",
-                "Flexible contract terms",
-                "Priority response for partners",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3 text-sm text-foreground">
-                  <span className="w-2 h-2 rounded-full bg-gold shrink-0" />
+            <ul className="space-y-2 mb-8">
+              {["Competitive pricing", "Transparent processes", "On-time delivery guarantee", "Dedicated account management"].map((item) => (
+                <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
                   {item}
                 </li>
               ))}
             </ul>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 gradient-gold text-navy px-7 py-3.5 font-semibold text-sm rounded-xl hover:shadow-glow transition-all duration-300 group"
+              className="inline-flex items-center gap-2 gradient-gold text-navy px-7 py-3.5 font-semibold text-sm rounded-lg hover:shadow-glow transition-all duration-300 group"
             >
               Start a Conversation
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
