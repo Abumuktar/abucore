@@ -3,18 +3,17 @@ import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
 import PageHero from "@/components/PageHero";
 import { motion } from "framer-motion";
-import { Building2, Landmark, School, HeartPulse, Globe, Briefcase, Users, CheckCircle2 } from "lucide-react";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const clients = [
-  { icon: Landmark, title: "Federal MDAs", desc: "Ministries, Departments, and Agencies at the federal level requiring supply and procurement partners.", tags: ["Federal Government", "MDAs"] },
-  { icon: Building2, title: "State Government Ministries", desc: "State-level ministries and parastatals across Nigeria, with a strong presence in Katsina State.", tags: ["State Level", "Katsina"] },
-  { icon: Users, title: "LGA Secretariats", desc: "Local Government Area secretariats and offices across 34+ LGAs in Katsina and neighboring states.", tags: ["34+ LGAs", "Local Govt"] },
-  { icon: School, title: "SUBEB & Education Sector", desc: "State Universal Basic Education Boards and educational institutions requiring supplies and infrastructure.", tags: ["Education", "SUBEB"] },
-  { icon: HeartPulse, title: "Hospitals & Health Sector", desc: "Government hospitals, primary health centres, and healthcare facilities needing medical consumables.", tags: ["Healthcare", "PHCs"] },
-  { icon: Briefcase, title: "Private Corporations", desc: "Private companies and businesses seeking reliable supply chain and contracting partners.", tags: ["Corporate", "Private"] },
-  { icon: Globe, title: "NGOs & International Orgs", desc: "Non-governmental and international organizations operating development programs in Northern Nigeria.", tags: ["NGOs", "Development"] },
+  { title: "Federal MDAs", desc: "Ministries, Departments, and Agencies at the federal level requiring supply and procurement partners.", tags: ["Federal Government", "MDAs"] },
+  { title: "State Government Ministries", desc: "State-level ministries and parastatals across Nigeria, with a strong presence in Katsina State.", tags: ["State Level", "Katsina"] },
+  { title: "LGA Secretariats", desc: "Local Government Area secretariats and offices across 34+ LGAs in Katsina and neighboring states.", tags: ["34+ LGAs", "Local Govt"] },
+  { title: "SUBEB & Education Sector", desc: "State Universal Basic Education Boards and educational institutions requiring supplies and infrastructure.", tags: ["Education", "SUBEB"] },
+  { title: "Hospitals & Health Sector", desc: "Government hospitals, primary health centres, and healthcare facilities needing medical consumables.", tags: ["Healthcare", "PHCs"] },
+  { title: "Private Corporations", desc: "Private companies and businesses seeking reliable supply chain and contracting partners.", tags: ["Corporate", "Private"] },
+  { title: "NGOs & International Orgs", desc: "Non-governmental and international organizations operating development programs in Northern Nigeria.", tags: ["NGOs", "Development"] },
 ];
 
 const WhoWeServe = () => {
@@ -37,17 +36,13 @@ const WhoWeServe = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, ease, delay: i * 0.06 }}
-                className="group bg-background border border-border rounded-2xl p-6 sm:p-8 hover:shadow-card hover:border-gold/20 transition-all duration-500"
+                className="bg-background border border-border rounded-2xl p-6 sm:p-8 hover:shadow-card hover:border-gold/20 transition-all duration-500"
               >
-                <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-5 group-hover:bg-gold/20 transition-colors">
-                  <c.icon className="w-5 h-5 text-gold" />
-                </div>
-                <h3 className="font-semibold text-foreground text-lg mb-2">{c.title}</h3>
+                <h3 className="font-bold text-foreground text-lg mb-2">{c.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-4">{c.desc}</p>
                 <div className="flex flex-wrap gap-2">
                   {c.tags.map((tag) => (
-                    <span key={tag} className="inline-flex items-center gap-1 text-[11px] font-medium text-gold bg-gold/10 rounded-full px-3 py-1">
-                      <CheckCircle2 className="w-3 h-3" />
+                    <span key={tag} className="text-[11px] font-medium text-gold bg-gold/10 rounded-full px-3 py-1">
                       {tag}
                     </span>
                   ))}

@@ -1,17 +1,18 @@
 import { motion } from "framer-motion";
-import { FileText, Armchair, Printer, HardHat, Fuel, Shirt, Wheat, HeartPulse, ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import warehouseImg from "@/assets/supply-warehouse.jpg";
+import logisticsImg from "@/assets/logistics.jpg";
+import constructionImg from "@/assets/construction.jpg";
+import meetingImg from "@/assets/meeting.jpg";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const services = [
-  { icon: FileText, title: "Stationery & Office Supply", desc: "Complete office supply solutions for government and private organizations." },
-  { icon: Armchair, title: "Furniture Supply", desc: "Quality office and institutional furniture delivered on time." },
-  { icon: Printer, title: "Printing & Branding", desc: "Professional printing and branding materials for all needs." },
-  { icon: HardHat, title: "Civil Works", desc: "Building renovation, construction, and infrastructure projects." },
-  { icon: Fuel, title: "Diesel & Fuel Supply", desc: "Reliable fuel supply for government fleets and organizations." },
-  { icon: Shirt, title: "Uniforms & Workwear", desc: "Custom uniforms and workwear for staff and institutions." },
-  { icon: Wheat, title: "Agricultural Inputs", desc: "Seeds, fertilizers, and farming tools for agricultural programs." },
-  { icon: HeartPulse, title: "Medical Consumables", desc: "Medical supplies for hospitals and healthcare facilities." },
+  { img: warehouseImg, title: "Supply & Procurement", desc: "Complete supply solutions — stationery, furniture, uniforms, medical consumables, and agricultural inputs for government and private organizations." },
+  { img: logisticsImg, title: "Logistics & Delivery", desc: "Reliable logistics fleet covering 34+ LGAs with last-mile delivery to every location across Katsina State and beyond." },
+  { img: constructionImg, title: "Civil Works & Construction", desc: "Building renovation, construction, maintenance, and infrastructure projects for government facilities and private developments." },
+  { img: meetingImg, title: "Consulting & Partnerships", desc: "Strategic partnerships with government agencies and private corporations for procurement planning and vendor management." },
 ];
 
 const ServicesGrid = () => {
@@ -25,10 +26,10 @@ const ServicesGrid = () => {
           transition={{ duration: 0.6, ease }}
           className="text-center mb-14"
         >
-          <span className="inline-flex items-center gap-2 text-gold text-xs tracking-[2px] uppercase font-semibold bg-gold/10 rounded-full px-4 py-1.5 mb-4">
+          <span className="text-gold text-xs tracking-[2px] uppercase font-semibold mb-3 block">
             Our Services
           </span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             What We Supply & Deliver
           </h2>
           <p className="text-muted-foreground mt-4 max-w-lg mx-auto text-sm sm:text-base">
@@ -36,30 +37,45 @@ const ServicesGrid = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-5%" }}
-              transition={{ duration: 0.5, ease, delay: i * 0.06 }}
-              className="group relative bg-background border border-border rounded-2xl p-6 hover:shadow-card hover:border-gold/30 transition-all duration-500 cursor-pointer overflow-hidden"
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, ease, delay: i * 0.08 }}
+              className="group rounded-2xl overflow-hidden border border-border hover:shadow-card transition-all duration-500"
             >
-              <div className="absolute top-0 left-0 right-0 h-1 gradient-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-t-2xl" />
-              <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-4 group-hover:bg-gold/20 transition-colors duration-300">
-                <service.icon className="w-5 h-5 text-gold" />
+              <div className="aspect-[16/10] overflow-hidden">
+                <img
+                  src={service.img}
+                  alt={service.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
               </div>
-              <h4 className="text-sm font-semibold text-foreground mb-2">{service.title}</h4>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                {service.desc}
-              </p>
-              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <ArrowUpRight className="w-4 h-4 text-gold" />
+              <div className="p-6">
+                <h4 className="text-lg font-bold text-foreground mb-2">{service.title}</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">{service.desc}</p>
               </div>
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center mt-10"
+        >
+          <Link
+            to="/services"
+            className="inline-flex items-center gap-2 text-gold text-sm font-semibold hover:gap-3 transition-all duration-300"
+          >
+            View All Services
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
