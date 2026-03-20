@@ -159,11 +159,11 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease, delay: 0.1 }}
             >
-              <div className="rounded-2xl overflow-hidden bg-muted">
+              <div className="rounded-2xl overflow-hidden bg-muted h-[360px] md:h-[420px] lg:h-[460px]">
                 <img
                   src={founderImg}
                   alt="Abubakar Muktar"
-                  className="w-full h-auto object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
               <div className="mt-5 flex items-center gap-4">
