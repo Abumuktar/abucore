@@ -29,7 +29,7 @@ const Footer = () => {
               <img
                 src={logoImg}
                 alt="Abucore"
-                className="h-9 w-auto brightness-0 invert"
+                className="h-9 w-auto"
               />
               <div>
                 <span className="text-primary-foreground font-bold text-sm tracking-wide block leading-none">
