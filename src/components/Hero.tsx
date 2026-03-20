@@ -45,9 +45,9 @@ const Hero = () => {
             transition={{ duration: 0.6, ease, delay: 0.2 }}
             className="text-primary-foreground/55 text-sm sm:text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed"
           >
-            From procurement to project delivery, Abucore Enterprises 
-            provides end-to-end solutions that keep your operations running 
-            smoothly — on time, every time.
+            From procurement to project delivery, we provide end-to-end 
+            solutions that keep your operations running smoothly — on time, 
+            every time.
           </motion.p>
 
           <motion.div
