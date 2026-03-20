@@ -24,7 +24,7 @@ const Hero = () => {
           >
             <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
             <span className="text-primary-foreground/70 text-xs font-medium tracking-wide">
-              Trusted by Government & Private Organizations
+              ABUCORE ENTERPRISES LIMITED
             </span>
           </motion.div>
 
