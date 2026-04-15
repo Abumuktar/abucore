@@ -11,11 +11,11 @@ const quickLinks = [
 ];
 
 const services = [
-  "Stationery Supply",
-  "Furniture Supply",
-  "Civil Works",
+  "Procurement & Supply",
+  "Civil Works & Infrastructure",
+  "Diesel & Fuel Supply",
   "Printing & Branding",
-  "Diesel Supply",
+  "Contract Execution & Delivery",
 ];
 
 const Footer = () => {
@@ -41,7 +41,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-primary-foreground/50 text-sm leading-relaxed max-w-xs">
-              Your trusted partner for supply, logistics, and general contracting across Nigeria.
+              Delivering reliable contracting solutions that meet the highest standards of quality, timeliness, and accountability.
             </p>
           </div>
 
@@ -86,11 +86,11 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 text-gold mt-0.5 shrink-0" />
-                <span className="text-primary-foreground/50 text-sm">07079462587</span>
+                <a href="tel:+2347079462587" className="text-primary-foreground/50 text-sm hover:text-gold transition-colors">07079462587</a>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 text-gold mt-0.5 shrink-0" />
-                <span className="text-primary-foreground/50 text-sm break-all">abucoreenterprises@gmail.com</span>
+                <a href="mailto:abucoreenterprises@gmail.com" className="text-primary-foreground/50 text-sm break-all hover:text-gold transition-colors">abucoreenterprises@gmail.com</a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-gold mt-0.5 shrink-0" />
@@ -105,7 +105,7 @@ const Footer = () => {
             © {new Date().getFullYear()} Abucore Enterprises Limited. All rights reserved.
           </p>
           <span className="text-primary-foreground/20 text-xs font-medium">
-            Supply · Logistics · General Contracting
+            Procurement · Contracting · Delivery
           </span>
         </div>
       </div>

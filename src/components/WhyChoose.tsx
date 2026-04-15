@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const reasons = [
-  { title: "Trusted & Verified", desc: "Fully registered with CAC. Tax-compliant. Ready for government procurement at every level.", highlights: ["CAC Registered", "Tax Compliant", "Verified Vendor"] },
-  { title: "24hr Response Time", desc: "We respond to every inquiry within 24 hours — no delays, no excuses. Your time matters to us.", highlights: ["Fast Turnaround", "Dedicated Support", "Always Available"] },
-  { title: "End-to-End Delivery", desc: "From procurement to doorstep delivery, we handle the entire process so you don't have to worry.", highlights: ["Full Logistics", "Quality Control", "On-Time Delivery"] },
-  { title: "Nationwide Coverage", desc: "Operating across 34+ LGAs with logistics support across Nigeria for seamless last-mile delivery.", highlights: ["34+ LGAs", "Cross-State", "Last Mile Delivery"] },
+  { title: "Execution-Focused", desc: "We don't just supply — we deliver complete contract outcomes from sourcing to final delivery.", highlights: ["Full Lifecycle", "Contract Delivery", "Managed Execution"] },
+  { title: "Reliable & Time-Bound", desc: "Strict timelines with a zero-failure execution mindset. Your deadlines are our priority.", highlights: ["On-Time Delivery", "Zero Delays", "100% Rate"] },
+  { title: "Transparent Processes", desc: "Clear procurement, pricing, and delivery systems so you always know where things stand.", highlights: ["Clear Pricing", "Open Reporting", "Full Accountability"] },
+  { title: "End-to-End Control", desc: "From sourcing to delivery — fully managed. We handle the entire value chain so you don't have to.", highlights: ["Vendor Management", "Quality Control", "Last Mile Delivery"] },
 ];
 
 const WhyChoose = () => {

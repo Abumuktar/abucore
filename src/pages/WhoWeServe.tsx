@@ -7,13 +7,12 @@ import { motion } from "framer-motion";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const clients = [
-  { title: "Federal MDAs", desc: "Ministries, Departments, and Agencies at the federal level requiring supply and procurement partners.", tags: ["Federal Government", "MDAs"] },
-  { title: "State Government Ministries", desc: "State-level ministries and parastatals across Nigeria, with a strong presence in Katsina State.", tags: ["State Level", "Katsina"] },
-  { title: "LGA Secretariats", desc: "Local Government Area secretariats and offices across 34+ LGAs in Katsina and neighboring states.", tags: ["34+ LGAs", "Local Govt"] },
-  { title: "SUBEB & Education Sector", desc: "State Universal Basic Education Boards and educational institutions requiring supplies and infrastructure.", tags: ["Education", "SUBEB"] },
-  { title: "Hospitals & Health Sector", desc: "Government hospitals, primary health centres, and healthcare facilities needing medical consumables.", tags: ["Healthcare", "PHCs"] },
-  { title: "Private Corporations", desc: "Private companies and businesses seeking reliable supply chain and contracting partners.", tags: ["Corporate", "Private"] },
-  { title: "NGOs & International Orgs", desc: "Non-governmental and international organizations operating development programs in Northern Nigeria.", tags: ["NGOs", "Development"] },
+  { title: "Government Agencies", desc: "Federal, State, and Local Government agencies requiring reliable procurement and supply chain partners for contract execution.", tags: ["Federal", "State", "LGA"] },
+  { title: "Ministries & Departments", desc: "State-level ministries, departments, and parastatals across Nigeria, with a strong presence in Katsina State.", tags: ["MDAs", "Parastatals"] },
+  { title: "Healthcare Institutions", desc: "Government hospitals, primary health centres, and healthcare facilities needing medical consumables and equipment.", tags: ["Hospitals", "PHCs", "Medical"] },
+  { title: "Educational Institutions", desc: "State Universal Basic Education Boards, schools, and educational institutions requiring supplies and infrastructure.", tags: ["SUBEB", "Schools", "Education"] },
+  { title: "NGOs & Development Orgs", desc: "Non-governmental and international development organizations operating programs across Northern Nigeria.", tags: ["NGOs", "Development", "International"] },
+  { title: "Private Sector Companies", desc: "Private companies and businesses seeking reliable supply chain, procurement, and general contracting partners.", tags: ["Corporate", "Private", "Business"] },
 ];
 
 const WhoWeServe = () => {

@@ -31,7 +31,7 @@ const Contact = () => {
       <PageHero
         label="Get in Touch"
         title="Contact Abucore"
-        description="Have a project? Need a quote? We're ready to help you get started."
+        description="Have a contract? Need a quote? We're ready to help you get started."
       />
 
       <section className="py-20 md:py-28 bg-background">
@@ -103,14 +103,16 @@ const Contact = () => {
                       className="w-full border border-border bg-background px-4 py-3.5 text-sm rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
                     >
                       <option value="">Select a service</option>
-                      <option>Stationery & Office Supply</option>
+                      <option>Office Equipment & Stationery</option>
                       <option>Furniture Supply</option>
-                      <option>Printing & Branding</option>
-                      <option>Civil Works</option>
-                      <option>Diesel & Fuel Supply</option>
-                      <option>Uniforms & Workwear</option>
+                      <option>Medical Consumables & Equipment</option>
                       <option>Agricultural Inputs</option>
-                      <option>Medical Consumables</option>
+                      <option>Uniforms & Textiles</option>
+                      <option>Building Construction</option>
+                      <option>Renovation & Maintenance</option>
+                      <option>Diesel & Fuel Supply</option>
+                      <option>Printing & Branding</option>
+                      <option>Contract Execution & Delivery</option>
                       <option>Other</option>
                     </select>
                   </div>
@@ -124,7 +126,7 @@ const Contact = () => {
                     required
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    placeholder="Tell us about your project or requirements..."
+                    placeholder="Tell us about your contract or requirements..."
                     className="w-full border border-border bg-background px-4 py-3.5 text-sm rounded-lg text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all resize-none"
                   />
                 </div>

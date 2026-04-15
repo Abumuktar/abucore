@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const steps = [
-  { step: "01", title: "Consultation", desc: "We discuss your needs and requirements in detail." },
-  { step: "02", title: "Quotation", desc: "You receive a transparent, competitive quote within 24 hours." },
-  { step: "03", title: "Execution", desc: "Our team procures, packages, and prepares your order." },
-  { step: "04", title: "Delivery", desc: "We deliver on time to your exact location, every time." },
+  { step: "01", title: "Consultation", desc: "Understanding client needs, project scope, and delivery requirements." },
+  { step: "02", title: "Quotation", desc: "Transparent and competitive pricing delivered within 24 hours." },
+  { step: "03", title: "Execution", desc: "Procurement, packaging, vendor coordination, and quality control." },
+  { step: "04", title: "Delivery", desc: "Timely delivery to specified location — on time, every time." },
 ];
 
 const HowWeWork = () => {

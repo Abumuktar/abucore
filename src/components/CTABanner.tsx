@@ -16,10 +16,10 @@ const CTABanner = () => {
           className="text-center max-w-2xl mx-auto"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-            Ready to Get Started?
+            Ready to Execute Your Next Contract?
           </h2>
           <p className="text-primary-foreground/60 mb-8 max-w-md mx-auto">
-            Get a free quote today and experience reliable, professional contracting services.
+            We don't just take contracts — we execute them successfully. Get a free quote today.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link

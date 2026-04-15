@@ -34,14 +34,14 @@ const PartnershipCTA = () => {
               Partner With Us
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight mb-5">
-              Let's Build Something{" "}
-              <span className="text-gold">Together</span>
+              Let's Execute Your Next{" "}
+              <span className="text-gold">Contract Together</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Whether you're a government agency seeking a reliable supply partner or a private organization looking for a trusted contractor, Abucore is ready to deliver.
+              Whether you're a government agency seeking a reliable procurement partner or a private organization looking for a trusted contractor — Abucore is ready to deliver complete contract outcomes.
             </p>
             <ul className="space-y-2 mb-8">
-              {["Competitive pricing", "Transparent processes", "On-time delivery guarantee", "Dedicated account management"].map((item) => (
+              {["Competitive & transparent pricing", "End-to-end contract management", "On-time delivery guarantee", "Dedicated account management"].map((item) => (
                 <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
                   <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
                   {item}
