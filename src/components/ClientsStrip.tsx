@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 
 const clients = [
   "Government Agencies",
-  "State Ministries",
-  "Healthcare Sector",
-  "Private Companies",
+  "Ministries & Departments",
+  "Healthcare Institutions",
   "Educational Institutions",
-  "NGOs",
+  "NGOs & Development Orgs",
+  "Private Companies",
 ];
 
 const ClientsStrip = () => {

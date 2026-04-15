@@ -6,9 +6,9 @@ import constructionImg from "@/assets/construction.jpg";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const projects = [
-  { img: warehouseImg, title: "Supply & Inventory", desc: "Fully stocked warehouses ensuring rapid fulfillment for urgent government orders." },
-  { img: logisticsImg, title: "Logistics & Delivery", desc: "A dedicated fleet covering all 34+ LGAs for last-mile delivery." },
-  { img: constructionImg, title: "Civil Works", desc: "Professional teams for construction, renovations, and infrastructure." },
+  { img: warehouseImg, title: "Procurement & Supply", desc: "End-to-end procurement — from vendor sourcing to inventory coordination and quality control." },
+  { img: logisticsImg, title: "Logistics & Delivery", desc: "Dedicated logistics network covering 34+ LGAs with last-mile delivery to any location." },
+  { img: constructionImg, title: "Civil Works & Infrastructure", desc: "Building construction, renovation, maintenance, and facility upgrades across Katsina State." },
 ];
 
 const ProjectsShowcase = () => {

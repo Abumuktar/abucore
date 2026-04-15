@@ -4,6 +4,7 @@ import CTABanner from "@/components/CTABanner";
 import PageHero from "@/components/PageHero";
 import { motion } from "framer-motion";
 import founderImg from "@/assets/founder.png";
+import { CheckCircle } from "lucide-react";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -20,6 +21,13 @@ const timeline = [
   { year: "2026", event: "Expanded operations to cover 34+ LGAs with 10+ service categories and growing." },
 ];
 
+const compliance = [
+  "Registered with Corporate Affairs Commission (CAC)",
+  "Tax compliant (TIN available)",
+  "Eligible for government and institutional procurement",
+  "Structured for contract execution across Nigeria",
+];
+
 const About = () => {
   return (
     <div className="min-h-screen">
@@ -30,8 +38,40 @@ const About = () => {
         description="Learn about our mission, values, and the people driving Abucore forward."
       />
 
-      {/* Story */}
+      {/* Mission & Vision */}
       <section className="py-20 md:py-28 bg-background">
+        <div className="container">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease }}
+              className="bg-muted/50 rounded-2xl p-8 border border-border"
+            >
+              <span className="text-gold text-xs tracking-[2px] uppercase font-semibold mb-4 block">Our Mission</span>
+              <p className="text-muted-foreground leading-relaxed">
+                To eliminate delays and inefficiencies in procurement and project execution by delivering reliable, transparent, and high-quality contracting services across Nigeria.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease, delay: 0.08 }}
+              className="bg-muted/50 rounded-2xl p-8 border border-border"
+            >
+              <span className="text-gold text-xs tracking-[2px] uppercase font-semibold mb-4 block">Our Vision</span>
+              <p className="text-muted-foreground leading-relaxed">
+                To become a leading government and institutional contracting partner in Nigeria, known for execution excellence, reliability, and nationwide reach.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Story */}
+      <section className="py-20 md:py-28 bg-muted/50">
         <div className="container">
           <div className="max-w-3xl mx-auto">
             <motion.div
@@ -43,10 +83,10 @@ const About = () => {
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">Our Story</h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Abucore Enterprises Limited was founded in 2025 with a clear purpose — to become the most reliable general contracting and supply company serving government agencies and private organizations across Nigeria.
+                  Abucore Enterprises Limited is a Nigerian-based general contracting and procurement execution company delivering reliable, end-to-end solutions for government agencies, institutions, and private organizations.
                 </p>
                 <p>
-                  From stationery supply to civil works, we approach every contract with the same commitment: deliver on time, deliver quality, and build relationships that last beyond a single transaction.
+                  We specialize in executing contracts efficiently — from sourcing and procurement to logistics and final delivery — ensuring projects are completed on time, within scope, and to specification.
                 </p>
                 <p>
                   Based in Katsina State, we have rapidly grown our operations to cover 34+ local government areas, delivering across 10+ service categories with a 100% delivery completion rate. Our growth is a testament to the trust our clients place in us.
@@ -58,7 +98,7 @@ const About = () => {
       </section>
 
       {/* Values */}
-      <section className="py-20 md:py-28 bg-muted/50">
+      <section className="py-20 md:py-28 bg-background">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -80,7 +120,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, ease, delay: i * 0.08 }}
-                className="bg-background rounded-2xl p-6 border border-border hover:shadow-card hover:border-gold/20 transition-all duration-500 text-center"
+                className="bg-muted/50 rounded-2xl p-6 border border-border hover:shadow-card hover:border-gold/20 transition-all duration-500 text-center"
               >
                 <div className="w-10 h-10 rounded-full gradient-gold flex items-center justify-center mx-auto mb-4">
                   <span className="text-sm font-bold text-navy">{v.title[0]}</span>
@@ -94,7 +134,7 @@ const About = () => {
       </section>
 
       {/* Timeline */}
-      <section className="py-20 md:py-28 bg-background">
+      <section className="py-20 md:py-28 bg-muted/50">
         <div className="container max-w-2xl">
           <motion.h2
             initial={{ opacity: 0 }}
@@ -130,6 +170,40 @@ const About = () => {
         </div>
       </section>
 
+      {/* Compliance */}
+      <section className="py-20 md:py-28 bg-background">
+        <div className="container max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease }}
+            className="text-center mb-10"
+          >
+            <span className="text-gold text-xs tracking-[2px] uppercase font-semibold mb-3 block">
+              Compliance & Registration
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Fully Verified & Compliant</h2>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease, delay: 0.1 }}
+            className="bg-muted/50 rounded-2xl p-8 border border-border"
+          >
+            <ul className="space-y-4">
+              {compliance.map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-gold shrink-0 mt-0.5" />
+                  <span className="text-muted-foreground text-sm leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Founder */}
       <section className="py-20 md:py-28 bg-muted/50">
         <div className="container">
@@ -150,7 +224,7 @@ const About = () => {
                 Under the leadership of Abubakar Muktar, Abucore has quickly established itself as a recognized name in government contracting across Katsina State and beyond.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                A young entrepreneur with deep roots in Katsina and a vision to build a contracting company known across Nigeria for speed, professionalism, and unwavering reliability.
+                Provides strategic direction and oversees contract execution, procurement operations, and organizational growth. A young entrepreneur with deep roots in Katsina and a vision to build a contracting company known across Nigeria for speed, professionalism, and unwavering reliability.
               </p>
             </motion.div>
             <motion.div

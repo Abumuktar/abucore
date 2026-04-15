@@ -17,17 +17,17 @@ const AboutPreview = () => {
             transition={{ duration: 0.7, ease }}
           >
             <span className="text-gold text-xs tracking-[2px] uppercase font-semibold mb-4 block">
-              Our Story
+              About Abucore
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight mb-6">
               Built on Trust.{" "}
-              <span className="text-gold">Driven by Reliability.</span>
+              <span className="text-gold">Driven by Execution.</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Abucore Enterprises Limited was founded in 2025 with a clear purpose — to become the most reliable general contracting and supply company serving government agencies and private organizations across Nigeria.
+              Abucore Enterprises Limited is a Nigerian-based general contracting and procurement execution company delivering reliable, end-to-end solutions for government agencies, institutions, and private organizations.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              From stationery supply to civil works, we approach every contract with the same commitment: deliver on time, deliver quality, and build relationships that last.
+              We specialize in executing contracts efficiently — from sourcing and procurement to logistics and final delivery — ensuring projects are completed on time, within scope, and to specification.
             </p>
             <Link
               to="/about"

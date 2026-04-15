@@ -34,8 +34,8 @@ const Hero = () => {
             transition={{ duration: 0.6, ease, delay: 0.1 }}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4.25rem] text-primary-foreground leading-[1.1] mb-5 md:mb-7 font-extrabold tracking-tight text-balance"
           >
-            Reliable Supply, Logistics &{" "}
-            <span className="text-gold">General Contracting</span>{" "}
+            Reliable Contracting &{" "}
+            <span className="text-gold">Procurement Execution</span>{" "}
             Across Nigeria
           </motion.h1>
 
@@ -45,9 +45,8 @@ const Hero = () => {
             transition={{ duration: 0.6, ease, delay: 0.2 }}
             className="text-primary-foreground/60 text-sm sm:text-base md:text-lg lg:text-xl max-w-md sm:max-w-lg md:max-w-2xl mx-auto mb-8 md:mb-12 leading-relaxed"
           >
-            From procurement to project delivery, we provide end-to-end 
-            solutions that keep your operations running smoothly — on time, 
-            every time.
+            From sourcing and procurement to logistics and final delivery — we provide 
+            end-to-end solutions that eliminate delays and keep your projects on track.
           </motion.p>
 
           <motion.div
@@ -63,13 +62,13 @@ const Hero = () => {
               Request a Quote
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1" />
             </Link>
-            <Link
-              to="/contact"
+            <a
+              href="tel:+2347079462587"
               className="inline-flex items-center justify-center gap-2 bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground px-8 py-3.5 md:px-10 md:py-4 font-semibold text-sm md:text-base rounded-lg border border-primary-foreground/15 hover:bg-primary-foreground/15 active:scale-[0.97] transition-all duration-300"
             >
               <Phone className="w-4 h-4 md:w-5 md:h-5" />
               Call Us Today
-            </Link>
+            </a>
           </motion.div>
 
           {/* Stats */}
