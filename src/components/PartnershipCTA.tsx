@@ -7,7 +7,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 const PartnershipCTA = () => {
   return (
-    <section className="py-16 md:py-24 bg-muted/30">
+    <section className="py-16 md:py-24 bg-navy">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <motion.div
@@ -15,13 +15,14 @@ const PartnershipCTA = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease }}
-            className="rounded-2xl overflow-hidden"
+            className="rounded-2xl overflow-hidden relative group"
           >
             <img
               src={meetingImg}
               alt="Partnership meeting"
-              className="w-full h-auto object-cover aspect-[16/10]"
+              className="w-full h-auto object-cover aspect-[16/10] group-hover:scale-105 transition-transform duration-700"
             />
+            <div className="absolute inset-0 bg-navy/20 group-hover:bg-transparent transition-colors duration-500" />
           </motion.div>
 
           <motion.div
@@ -33,17 +34,17 @@ const PartnershipCTA = () => {
             <span className="text-gold text-xs tracking-[2px] uppercase font-semibold mb-4 block">
               Partner With Us
             </span>
-            <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-6">
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-primary-foreground mb-6">
               Let's Execute Your Next{" "}
               <span className="text-gold">Contract Together</span>
             </h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
+            <p className="text-primary-foreground/60 leading-relaxed mb-6">
               Whether you're a government agency seeking a reliable procurement partner or a private organization looking for a trusted contractor — Abucore is ready to deliver complete contract outcomes.
             </p>
-            <ul className="space-y-2 mb-8">
+            <ul className="space-y-3 mb-10">
               {["Competitive & transparent pricing", "End-to-end contract management", "On-time delivery guarantee", "Dedicated account management"].map((item) => (
-                <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
+                <li key={item} className="flex items-center gap-3 text-sm text-primary-foreground/70">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 shadow-[0_0_8px_rgba(234,179,8,0.4)]" />
                   {item}
                 </li>
               ))}

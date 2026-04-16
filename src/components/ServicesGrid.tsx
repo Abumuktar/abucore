@@ -1,18 +1,18 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import warehouseImg from "@/assets/supply-warehouse.jpg";
-import logisticsImg from "@/assets/logistics.jpg";
-import constructionImg from "@/assets/construction.jpg";
-import meetingImg from "@/assets/meeting.jpg";
+import procurementImg from "@/assets/services_procurement.png";
+import logisticsImg from "@/assets/services_logistics.png";
+import constructionImg from "@/assets/construction_premium.png";
+import partnersImg from "@/assets/real_contracting.png";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const services = [
-  { img: warehouseImg, title: "Supply & Procurement", desc: "Complete supply solutions — stationery, furniture, uniforms, medical consumables, and agricultural inputs for government and private organizations." },
-  { img: logisticsImg, title: "Logistics & Delivery", desc: "Reliable logistics fleet covering 34+ LGAs with last-mile delivery to every location across Katsina State and beyond." },
-  { img: constructionImg, title: "Civil Works & Construction", desc: "Building renovation, construction, maintenance, and infrastructure projects for government facilities and private developments." },
-  { img: meetingImg, title: "Consulting & Partnerships", desc: "Strategic partnerships with government agencies and private corporations for procurement planning and vendor management." },
+  { img: procurementImg, title: "Supply & Procurement", desc: "Coordinating the delivery of high-end office infrastructure, critical stationery, medical consumables, and agricultural inputs." },
+  { img: logisticsImg, title: "Statewide Logistics", desc: "Maintaining a modern, reliable delivery fleet ensuring rapid, last-mile fulfillment across all 34+ LGAs." },
+  { img: constructionImg, title: "Infrastructure & Works", desc: "Executing building construction, detailed renovations, and facility maintenance with precision and technical excellence." },
+  { img: partnersImg, title: "Project Consulting", desc: "Strategic planning and partnership management for large-scale procurement and infrastructure projects." },
 ];
 
 const ServicesGrid = () => {

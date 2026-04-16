@@ -11,7 +11,7 @@ const reasons = [
 
 const WhyChoose = () => {
   return (
-    <section className="py-20 md:py-28 bg-muted/50">
+    <section className="py-16 md:py-24 bg-muted/50">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -23,8 +23,8 @@ const WhyChoose = () => {
           <span className="text-gold text-xs tracking-[2px] uppercase font-semibold mb-3 block">
             Why Abucore
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Built Different. Built to Deliver.
+          <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground">
+            Built Different. <span className="text-gold">Built to Deliver.</span>
           </h2>
         </motion.div>
 
