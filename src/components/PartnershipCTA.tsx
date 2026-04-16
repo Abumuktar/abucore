@@ -7,7 +7,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 const PartnershipCTA = () => {
   return (
-    <section className="py-20 md:py-28 bg-background">
+    <section className="py-16 md:py-24 bg-muted/30">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <motion.div
@@ -33,7 +33,7 @@ const PartnershipCTA = () => {
             <span className="text-gold text-xs tracking-[2px] uppercase font-semibold mb-4 block">
               Partner With Us
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight mb-5">
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-6">
               Let's Execute Your Next{" "}
               <span className="text-gold">Contract Together</span>
             </h2>

@@ -1,17 +1,19 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Phone } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/real_contracting.png";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-navy">
       {/* Background */}
       <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-navy/80" />
+        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-80" />
+        {/* Dynamic overlay with radial center light */}
+        <div className="absolute inset-0 bg-navy/85 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/40 via-navy/85 to-navy" />
       </div>
 
       <div className="container relative z-10 py-24 md:py-32 lg:py-40">
@@ -32,21 +34,20 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4.25rem] text-primary-foreground leading-[1.1] mb-5 md:mb-7 font-extrabold tracking-tight text-balance"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4.25rem] text-primary-foreground leading-[1.05] mb-5 md:mb-7 font-display font-extrabold tracking-tight text-balance drop-shadow-sm"
           >
-            Reliable Contracting &{" "}
-            <span className="text-gold">Procurement Execution</span>{" "}
-            Across Nigeria
+            Reliable Procurement.{" "}
+            <span className="text-gold brightness-110 drop-shadow-[0_2px_10px_rgba(234,179,8,0.2)]">Precision Execution.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease, delay: 0.2 }}
-            className="text-primary-foreground/60 text-sm sm:text-base md:text-lg lg:text-xl max-w-md sm:max-w-lg md:max-w-2xl mx-auto mb-8 md:mb-12 leading-relaxed"
+            className="text-primary-foreground/70 text-sm sm:text-base md:text-lg lg:text-xl max-w-md sm:max-w-lg md:max-w-2xl mx-auto mb-8 md:mb-12 leading-relaxed font-medium"
           >
-            From sourcing and procurement to logistics and final delivery — we provide 
-            end-to-end solutions that eliminate delays and keep your projects on track.
+            Streamlining procurement, logistics, and infrastructure projects 
+            across Nigeria with transparency and excellence.
           </motion.p>
 
           <motion.div
@@ -76,16 +77,16 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, ease, delay: 0.5 }}
-            className="flex justify-center gap-10 sm:gap-14 md:gap-20 mt-14 md:mt-20 pt-8 border-t border-primary-foreground/10"
+            className="flex flex-wrap justify-center gap-8 sm:gap-12 md:gap-16 mt-14 md:mt-20 pt-10 border-t border-primary-foreground/5"
           >
             {[
-              { value: "34+", label: "LGAs Covered" },
+              { value: "34+", label: "LGAs Across Nigeria" },
               { value: "10+", label: "Service Categories" },
-              { value: "100%", label: "Delivery Rate" },
+              { value: "100%", label: "Delivery Commitment" },
             ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gold">{stat.value}</div>
-                <div className="text-primary-foreground/50 text-xs sm:text-sm mt-1.5 font-medium">{stat.label}</div>
+              <div key={stat.label} className="text-center group">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-gold transition-transform duration-300 group-hover:scale-110">{stat.value}</div>
+                <div className="text-primary-foreground/40 text-[10px] sm:text-xs uppercase tracking-[2px] mt-2 font-semibold">{stat.label}</div>
               </div>
             ))}
           </motion.div>

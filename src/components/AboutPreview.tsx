@@ -7,7 +7,7 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 const AboutPreview = () => {
   return (
-    <section className="py-20 md:py-28 bg-background overflow-hidden">
+    <section className="py-16 md:py-24 bg-background overflow-hidden">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div
@@ -19,7 +19,7 @@ const AboutPreview = () => {
             <span className="text-gold text-xs tracking-[2px] uppercase font-semibold mb-4 block">
               About Abucore
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight mb-6">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground leading-tight mb-6">
               Built on Trust.{" "}
               <span className="text-gold">Driven by Execution.</span>
             </h2>

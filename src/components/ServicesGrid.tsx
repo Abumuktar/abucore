@@ -17,7 +17,7 @@ const services = [
 
 const ServicesGrid = () => {
   return (
-    <section className="py-20 md:py-28 bg-background">
+    <section className="py-16 md:py-24 bg-background">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,7 +29,7 @@ const ServicesGrid = () => {
           <span className="text-gold text-xs tracking-[2px] uppercase font-semibold mb-3 block">
             Our Services
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">
             What We Supply & Deliver
           </h2>
           <p className="text-muted-foreground mt-4 max-w-lg mx-auto text-sm sm:text-base">
@@ -45,7 +45,7 @@ const ServicesGrid = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, ease, delay: i * 0.08 }}
-              className="group rounded-2xl overflow-hidden border border-border hover:shadow-card transition-all duration-500"
+              className="group rounded-2xl overflow-hidden border border-border hover:border-gold/20 hover:shadow-card transition-all duration-500"
             >
               <div className="aspect-[16/10] overflow-hidden">
                 <img
@@ -55,7 +55,7 @@ const ServicesGrid = () => {
                 />
               </div>
               <div className="p-6">
-                <h4 className="text-lg font-bold text-foreground mb-2">{service.title}</h4>
+                <h4 className="text-lg font-display font-bold text-foreground mb-2">{service.title}</h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">{service.desc}</p>
               </div>
             </motion.div>

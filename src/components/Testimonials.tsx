@@ -22,7 +22,7 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="py-20 md:py-28 gradient-navy relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-background overflow-hidden">
       <div className="container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -34,7 +34,7 @@ const Testimonials = () => {
           <span className="text-gold text-xs tracking-[2px] uppercase font-semibold mb-3 block">
             Testimonials
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">
             What Our Clients Say
           </h2>
         </motion.div>

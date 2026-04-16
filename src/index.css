@@ -38,10 +38,10 @@
     --navy: 213 52% 11%;
     --navy-light: 211 41% 18%;
     --navy-50: 213 40% 96%;
-    --gold: 43 64% 52%;
-    --gold-light: 48 83% 66%;
-    --gold-pale: 47 88% 93%;
-    --gold-dark: 43 64% 42%;
+    --gold: 45 85% 62%;
+    --gold-light: 48 95% 75%;
+    --gold-pale: 47 90% 94%;
+    --gold-dark: 45 85% 45%;
     --surface: 220 20% 97%;
     --surface-warm: 40 33% 96%;
   }
@@ -79,7 +79,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Outfit', system-ui, sans-serif;
     font-weight: 700;
   }
 }
