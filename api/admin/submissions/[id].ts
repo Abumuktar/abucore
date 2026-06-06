@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { ObjectId } from "mongodb";
 import { z } from "zod";
-import { getDb } from "../../../server/mongodb";
-import { requireAuth } from "../../../server/auth";
+import { getDb } from "../../../server/mongodb.js";
+import { requireAuth } from "../../../server/auth.js";
 
 const patchSchema = z.object({ status: z.enum(["New", "Read", "Responded"]) });
 

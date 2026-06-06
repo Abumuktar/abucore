@@ -1,13 +1,13 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { z } from "zod";
-import { getDb } from "../../../server/mongodb";
-import { requireAuth } from "../../../server/auth";
+import { getDb } from "../../../server/mongodb.js";
+import { requireAuth } from "../../../server/auth.js";
 import {
   freshMilestones,
   generateProjectId,
   toAdminProject,
   logActivity,
-} from "../../../server/projects";
+} from "../../../server/projects.js";
 
 const createSchema = z.object({
   clientName: z.string().trim().min(1),

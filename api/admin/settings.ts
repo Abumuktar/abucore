@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { z } from "zod";
-import { getDb } from "../../server/mongodb";
-import { requireAuth } from "../../server/auth";
+import { getDb } from "../../server/mongodb.js";
+import { requireAuth } from "../../server/auth.js";
 
 const serviceSchema = z.object({
   key: z.string(),

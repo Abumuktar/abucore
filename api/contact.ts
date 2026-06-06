@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { z } from "zod";
 import nodemailer from "nodemailer";
-import { getDb } from "../server/mongodb";
+import { getDb } from "../server/mongodb.js";
 
 const schema = z.object({
   name: z.string().trim().min(1).max(120),

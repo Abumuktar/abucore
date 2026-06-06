@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { getDb } from "../server/mongodb";
+import { getDb } from "../server/mongodb.js";
 
 // Public, read-only site settings used by the contact form (active services +
 // WhatsApp number). No private data exposed.

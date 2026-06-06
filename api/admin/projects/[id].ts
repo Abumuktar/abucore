@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { z } from "zod";
-import { getDb } from "../../../server/mongodb";
-import { requireAuth } from "../../../server/auth";
-import { toAdminProject, logActivity } from "../../../server/projects";
+import { getDb } from "../../../server/mongodb.js";
+import { requireAuth } from "../../../server/auth.js";
+import { toAdminProject, logActivity } from "../../../server/projects.js";
 
 const patchSchema = z.object({
   clientName: z.string().trim().min(1).optional(),

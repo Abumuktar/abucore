@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
-import { getDb } from "../../server/mongodb";
-import { signSession, setSessionCookie } from "../../server/auth";
+import { getDb } from "../../server/mongodb.js";
+import { signSession, setSessionCookie } from "../../server/auth.js";
 
 const schema = z.object({
   email: z.string().trim().email(),

@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
-import { getDb } from "../../server/mongodb";
-import { requireAuth } from "../../server/auth";
+import { getDb } from "../../server/mongodb.js";
+import { requireAuth } from "../../server/auth.js";
 
 const schema = z.object({
   currentPassword: z.string().min(1),

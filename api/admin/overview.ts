@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { getDb } from "../../server/mongodb";
-import { requireAuth } from "../../server/auth";
-import { toAdminProject } from "../../server/projects";
+import { getDb } from "../../server/mongodb.js";
+import { requireAuth } from "../../server/auth.js";
+import { toAdminProject } from "../../server/projects.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!requireAuth(req, res)) return;

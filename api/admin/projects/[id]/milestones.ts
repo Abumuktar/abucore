@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { z } from "zod";
-import { getDb } from "../../../../server/mongodb";
-import { requireAuth } from "../../../../server/auth";
-import { toAdminProject, logActivity } from "../../../../server/projects";
+import { getDb } from "../../../../server/mongodb.js";
+import { requireAuth } from "../../../../server/auth.js";
+import { toAdminProject, logActivity } from "../../../../server/projects.js";
 
 const schema = z.object({
   key: z.enum(["contract_signed", "mobilization", "execution", "quality_check", "delivery"]),
