@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, Phone, Download } from "lucide-react";
 import heroBg from "@/assets/real_contracting.png";
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -64,11 +64,19 @@ const Hero = () => {
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5 transition-transform group-hover:translate-x-1" />
             </Link>
             <a
-              href="tel:+2347079462587"
+              href="tel:+2349138266715"
               className="inline-flex items-center justify-center gap-2 bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground px-8 py-3.5 md:px-10 md:py-4 font-semibold text-sm md:text-base rounded-lg border border-primary-foreground/15 hover:bg-primary-foreground/15 active:scale-[0.97] transition-all duration-300"
             >
               <Phone className="w-4 h-4 md:w-5 md:h-5" />
               Call Us Today
+            </a>
+            <a
+              href="/Abucore-Company-Profile.pdf"
+              download
+              className="inline-flex items-center justify-center gap-2 bg-transparent text-primary-foreground/80 px-8 py-3.5 md:px-10 md:py-4 font-semibold text-sm md:text-base rounded-lg border border-primary-foreground/15 hover:text-primary-foreground hover:bg-primary-foreground/5 active:scale-[0.97] transition-all duration-300"
+            >
+              <Download className="w-4 h-4 md:w-5 md:h-5" />
+              Download Profile
             </a>
           </motion.div>
 

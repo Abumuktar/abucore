@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
-import logoImg from "@/assets/logo.png";
 
 const quickLinks = [
   { label: "Home", path: "/" },
   { label: "About Us", path: "/about" },
   { label: "Services", path: "/services" },
   { label: "Who We Serve", path: "/who-we-serve" },
+  { label: "Track Project", path: "/track" },
   { label: "Contact", path: "/contact" },
 ];
 
@@ -25,23 +25,16 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-primary-foreground/10">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-2.5 mb-5">
-              <img
-                src={logoImg}
-                alt="Abucore"
-                className="h-9 w-auto"
-              />
-              <div>
-                <span className="text-primary-foreground font-bold text-sm tracking-wide block leading-none">
-                  ABUCORE
-                </span>
-                <span className="text-primary-foreground/40 text-[9px] tracking-[1.5px] uppercase">
-                  Enterprises
-                </span>
-              </div>
-            </div>
+            <img
+              src="/logo1.png"
+              alt="Abucore Enterprises Limited"
+              className="h-14 w-auto rounded-lg mb-5"
+            />
             <p className="text-primary-foreground/50 text-sm leading-relaxed max-w-xs">
               Delivering reliable contracting solutions that meet the highest standards of quality, timeliness, and accountability.
+            </p>
+            <p className="text-primary-foreground/40 text-xs mt-4 font-medium tracking-wide">
+              RC No: 9593574
             </p>
           </div>
 
@@ -86,7 +79,7 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 text-gold mt-0.5 shrink-0" />
-                <a href="tel:+2347079462587" className="text-primary-foreground/50 text-sm hover:text-gold transition-colors">07079462587</a>
+                <a href="tel:+2349138266715" className="text-primary-foreground/50 text-sm hover:text-gold transition-colors">09138266715</a>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 text-gold mt-0.5 shrink-0" />

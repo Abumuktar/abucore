@@ -4,12 +4,29 @@ import PageHero from "@/components/PageHero";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, MessageCircle, ArrowRight, Clock } from "lucide-react";
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
+import { fetchApi } from "@/lib/api";
+import { SERVICE_OPTIONS } from "@/lib/project";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
+interface PublicSettings {
+  companyPhone: string;
+  activeServices: string[];
+}
+
+/** Normalize a Nigerian number to a wa.me target (default Abucore line). */
+const toWaNumber = (phone?: string) => {
+  const digits = (phone || "").replace(/\D/g, "");
+  if (digits.startsWith("0")) return "234" + digits.slice(1);
+  if (digits.startsWith("234")) return digits;
+  if (digits.length === 10) return "234" + digits;
+  return digits || "2349138266715";
+};
+
 const contactInfo = [
-  { icon: Phone, label: "Phone / WhatsApp", value: "07079462587", href: "tel:+2347079462587" },
+  { icon: Phone, label: "Phone / WhatsApp", value: "09138266715", href: "tel:+2349138266715" },
   { icon: Mail, label: "Email Address", value: "abucoreenterprises@gmail.com", href: "mailto:abucoreenterprises@gmail.com" },
   { icon: MapPin, label: "Office Location", value: "Katsina State, Nigeria", href: null },
   { icon: Clock, label: "Response Time", value: "Within 24 hours", href: null },
@@ -19,9 +36,45 @@ const Contact = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
 
+  // Active services + WhatsApp number, managed from the dashboard Settings page.
+  const { data: settings } = useQuery<PublicSettings>({
+    queryKey: ["public-settings"],
+    queryFn: () => fetchApi<PublicSettings>("/api/settings"),
+    staleTime: 5 * 60 * 1000,
+  });
+  const serviceOptions =
+    settings?.activeServices && settings.activeServices.length > 0
+      ? settings.activeServices
+      : SERVICE_OPTIONS;
+  const waNumber = toWaNumber(settings?.companyPhone);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: "Message Sent!", description: "Thank you! We'll respond within 24 hours." });
+
+    // Save the submission to the dashboard inbox (best-effort — never blocks
+    // the user; the WhatsApp hand-off below is the primary contact path).
+    fetchApi("/api/contact", {
+      method: "POST",
+      body: JSON.stringify(form),
+    }).catch(() => {
+      /* offline or API unavailable — WhatsApp still opens below */
+    });
+
+    const lines = [
+      "*New Quote Request — Abucore*",
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      form.phone ? `Phone: ${form.phone}` : null,
+      form.service ? `Service: ${form.service}` : null,
+      "",
+      "Message:",
+      form.message,
+    ].filter(Boolean);
+
+    const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(lines.join("\n"))}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+
+    toast({ title: "Opening WhatsApp…", description: "Your details are ready to send. Tap send in WhatsApp to reach us." });
     setForm({ name: "", email: "", phone: "", service: "", message: "" });
   };
 
@@ -103,17 +156,9 @@ const Contact = () => {
                       className="w-full border border-border bg-background px-4 py-3.5 text-sm rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold transition-all"
                     >
                       <option value="">Select a service</option>
-                      <option>Office Equipment & Stationery</option>
-                      <option>Furniture Supply</option>
-                      <option>Medical Consumables & Equipment</option>
-                      <option>Agricultural Inputs</option>
-                      <option>Uniforms & Textiles</option>
-                      <option>Building Construction</option>
-                      <option>Renovation & Maintenance</option>
-                      <option>Diesel & Fuel Supply</option>
-                      <option>Printing & Branding</option>
-                      <option>Contract Execution & Delivery</option>
-                      <option>Other</option>
+                      {serviceOptions.map((s) => (
+                        <option key={s}>{s}</option>
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -178,7 +223,7 @@ const Contact = () => {
               </div>
 
               <a
-                href="https://wa.me/2347079462587"
+                href="https://wa.me/2349138266715"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 gradient-navy text-primary-foreground px-6 py-4 rounded-lg font-semibold text-sm hover:shadow-soft transition-all duration-300 mt-6"

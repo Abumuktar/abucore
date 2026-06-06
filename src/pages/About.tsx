@@ -4,7 +4,7 @@ import CTABanner from "@/components/CTABanner";
 import PageHero from "@/components/PageHero";
 import { motion } from "framer-motion";
 import founderImg from "@/assets/founder.png";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Download } from "lucide-react";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -16,14 +16,14 @@ const values = [
 ];
 
 const timeline = [
-  { year: "2025", event: "Abucore Enterprises Limited founded in Katsina State with a vision to deliver reliable contracting services." },
-  { year: "2025", event: "Secured first government supply contracts across multiple LGAs in Katsina State." },
-  { year: "2026", event: "Expanded operations to cover 34+ LGAs with 10+ service categories and growing." },
+  { year: "2026", event: "Abucore Enterprises Limited incorporated in Katsina State under CAMA 2020 (RC No: 9593574)." },
+  { year: "2026", event: "Delivered first procurement, renovation, and ICT projects for institutional clients across Katsina State." },
+  { year: "2026", event: "Expanded into general contracting, ICT solutions, and consultancy across Northern Nigeria." },
 ];
 
 const compliance = [
-  "Registered with Corporate Affairs Commission (CAC)",
-  "Tax compliant (TIN available)",
+  "Incorporated under CAMA 2020 — RC No: 9593574",
+  "Tax compliant — TIN: 2622090848630",
   "Eligible for government and institutional procurement",
   "Structured for contract execution across Nigeria",
 ];
@@ -92,6 +92,14 @@ const About = () => {
                   Based in Katsina State, we have rapidly grown our operations to cover 34+ local government areas, delivering across 10+ service categories with a 100% delivery completion rate. Our growth is a testament to the trust our clients place in us.
                 </p>
               </div>
+              <a
+                href="/Abucore-Company-Profile.pdf"
+                download
+                className="inline-flex items-center gap-2 gradient-gold text-navy px-7 py-3.5 mt-8 font-semibold text-sm rounded-lg hover:shadow-glow transition-all duration-300 group"
+              >
+                <Download className="w-4 h-4" />
+                Download Company Profile
+              </a>
             </motion.div>
           </div>
         </div>

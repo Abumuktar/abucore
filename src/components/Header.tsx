@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import logoImg from "@/assets/logo.png";
 
 const navLinks = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
   { label: "Services", path: "/services" },
   { label: "Who We Serve", path: "/who-we-serve" },
+  { label: "Track Project", path: "/track" },
   { label: "Contact", path: "/contact" },
 ];
 
@@ -32,20 +32,12 @@ const Header = () => {
       }`}
     >
       <div className="container flex items-center justify-between h-16 md:h-[72px]">
-        <Link to="/" className="flex items-center gap-2.5">
+        <Link to="/" className="flex items-center shrink-0">
           <img
-            src={logoImg}
+            src="/logo.png"
             alt="Abucore Enterprises Limited"
-            className="h-9 md:h-10 w-auto"
+            className="h-24 md:h-28 w-auto"
           />
-          <div className="hidden sm:block">
-            <span className="text-foreground font-bold text-sm tracking-wide block leading-none">
-              ABUCORE
-            </span>
-            <span className="text-muted-foreground text-[9px] tracking-[1.5px] uppercase">
-              Enterprises
-            </span>
-          </div>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
