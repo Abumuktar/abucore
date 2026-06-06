@@ -26,7 +26,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <img
-              src="/logo1.png"
+              src="/logo.png"
               alt="Abucore Enterprises Limited"
               className="h-14 w-auto rounded-lg mb-5"
             />

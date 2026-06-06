@@ -37,7 +37,7 @@ const AdminLayout = () => {
     <div className="min-h-screen bg-muted/40">
       {/* Mobile top bar */}
       <header className="md:hidden sticky top-0 z-30 bg-navy flex items-center justify-between px-4 h-14">
-        <img src="/logo1.png" alt="Abucore" className="h-9 w-auto rounded" />
+        <img src="/logo.png" alt="Abucore" className="h-9 w-auto rounded" />
         <button
           onClick={logout}
           className="inline-flex items-center gap-1.5 text-primary-foreground/70 hover:text-primary-foreground text-xs font-medium px-2 py-1.5"
@@ -55,7 +55,7 @@ const AdminLayout = () => {
         {/* Desktop sidebar — sticky so it stays in place while content scrolls */}
         <aside className="hidden md:flex md:flex-col md:w-60 md:sticky md:top-0 md:h-screen bg-navy shrink-0">
           <div className="p-5 border-b border-white/5">
-            <img src="/logo1.png" alt="Abucore Enterprises Limited" className="h-11 w-auto rounded-lg" />
+            <img src="/logo.png" alt="Abucore Enterprises Limited" className="h-11 w-auto rounded-lg" />
           </div>
           <nav className="flex flex-col gap-1 p-3 flex-1 overflow-y-auto">{items}</nav>
           <div className="p-3 border-t border-white/5">
