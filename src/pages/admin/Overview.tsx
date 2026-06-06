@@ -13,7 +13,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { fetchApi } from "@/lib/api";
-import { formatNaira } from "@/lib/project";
+import { formatNaira, formatNairaCompact } from "@/lib/project";
 
 interface OverviewData {
   activeProjects: number;
@@ -39,7 +39,8 @@ const Overview = () => {
     {
       icon: Wallet,
       label: "Total Contract Value",
-      value: data ? formatNaira(data.totalContractValue) : "—",
+      value: data ? formatNairaCompact(data.totalContractValue) : "—",
+      title: data ? formatNaira(data.totalContractValue) : undefined,
     },
     {
       icon: CheckCircle2,
@@ -73,7 +74,10 @@ const Overview = () => {
             <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center mb-3">
               <s.icon className="w-4 h-4 text-gold" />
             </div>
-            <div className="text-2xl font-display font-bold text-foreground">
+            <div
+              title={s.title}
+              className="text-xl sm:text-2xl font-display font-bold text-foreground leading-tight tabular-nums break-words"
+            >
               {isLoading ? <Loader2 className="w-5 h-5 animate-spin text-muted-foreground" /> : s.value}
             </div>
             <div className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold mt-1">

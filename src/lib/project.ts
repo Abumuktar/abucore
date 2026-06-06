@@ -84,6 +84,15 @@ export function formatNaira(value: number): string {
   return "₦" + (value || 0).toLocaleString("en-NG");
 }
 
+/** Compact Naira for tight spaces, e.g. 4500000 → "₦4.5M", 450000 → "₦450K". */
+export function formatNairaCompact(value: number): string {
+  const v = value || 0;
+  if (v >= 1_000_000_000) return `₦${(v / 1_000_000_000).toFixed(1).replace(/\.0$/, "")}B`;
+  if (v >= 1_000_000) return `₦${(v / 1_000_000).toFixed(1).replace(/\.0$/, "")}M`;
+  if (v >= 1_000) return `₦${(v / 1_000).toFixed(1).replace(/\.0$/, "")}K`;
+  return `₦${v.toLocaleString("en-NG")}`;
+}
+
 /** ISO/date string → "YYYY-MM-DD" for <input type="date"> values. */
 export function dateInputValue(value?: string | null): string {
   if (!value) return "";
