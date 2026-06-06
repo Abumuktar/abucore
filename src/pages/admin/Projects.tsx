@@ -104,43 +104,32 @@ const Projects = () => {
         </div>
       )}
 
-      {/* Table (desktop) / cards (mobile) */}
+      {/* Responsive list */}
       {!isLoading && rows.length > 0 && (
-        <div className="bg-background border border-border rounded-2xl overflow-hidden">
-          {/* header row */}
-          <div className="hidden md:grid grid-cols-[1.1fr_1.4fr_1fr_0.9fr_1fr_auto] gap-3 px-5 py-3 bg-muted/40 text-[11px] uppercase tracking-wider font-semibold text-muted-foreground border-b border-border">
-            <span>Project ID</span>
-            <span>Client</span>
-            <span>Service</span>
-            <span>Value</span>
-            <span>Status</span>
-            <span className="w-5" />
-          </div>
+        <div className="bg-background border border-border rounded-2xl overflow-hidden divide-y divide-border">
           {rows.map((p) => (
             <Link
               key={p.projectId}
               to={`/admin/projects/${p.projectId}`}
-              className="grid grid-cols-2 md:grid-cols-[1.1fr_1.4fr_1fr_0.9fr_1fr_auto] gap-2 md:gap-3 px-5 py-4 items-center border-b border-border last:border-0 hover:bg-muted/40 transition-colors"
+              className="flex items-center gap-3 px-4 sm:px-5 py-4 hover:bg-muted/40 transition-colors"
             >
-              <span className="font-semibold text-foreground text-sm">{p.projectId}</span>
-              <span className="text-sm text-foreground truncate">{p.clientName}</span>
-              <span className="text-xs text-muted-foreground truncate hidden md:block">
-                {p.serviceType}
-              </span>
-              <span className="text-sm text-foreground hidden md:block">
-                {formatNaira(p.contractValue)}
-              </span>
-              <span className="flex items-center gap-2">
-                <span
-                  className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-semibold ${STATUS_STYLES[p.status]}`}
-                >
-                  {p.status}
-                </span>
-                <span className="text-[10px] text-muted-foreground hidden lg:inline">
-                  {p.progress}%
-                </span>
-              </span>
-              <ChevronRight className="w-4 h-4 text-muted-foreground justify-self-end hidden md:block" />
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="font-semibold text-foreground text-sm">{p.projectId}</span>
+                  <span
+                    className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-semibold ${STATUS_STYLES[p.status]}`}
+                  >
+                    {p.status}
+                  </span>
+                </div>
+                <p className="text-sm text-foreground truncate mt-0.5">{p.clientName}</p>
+                <p className="text-xs text-muted-foreground truncate">{p.serviceType}</p>
+              </div>
+              <div className="text-right shrink-0">
+                <p className="text-sm font-semibold text-foreground">{formatNaira(p.contractValue)}</p>
+                <p className="text-[11px] text-muted-foreground">{p.progress}% done</p>
+              </div>
+              <ChevronRight className="w-4 h-4 text-muted-foreground shrink-0" />
             </Link>
           ))}
         </div>
