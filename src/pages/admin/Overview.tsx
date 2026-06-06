@@ -92,7 +92,7 @@ const Overview = () => {
         <div className="bg-background border border-border rounded-2xl p-5">
           <h2 className="font-bold text-foreground mb-4 text-sm">Quick Actions</h2>
           <div className="space-y-2">
-            <Action to="/admin/projects/new" icon={Plus} label="Add New Project" primary />
+            <Action to="/admin/projects?new=1" icon={Plus} label="Add New Project" primary />
             <Action to="/admin/projects" icon={FolderKanban} label="View All Projects" />
             <Action to="/admin/submissions" icon={Inbox} label="View Submissions" />
           </div>
@@ -113,7 +113,7 @@ const Overview = () => {
                 <span className="w-1.5 h-1.5 rounded-full bg-gold mt-1.5 shrink-0" />
                 <div>
                   <span className="text-foreground">{a.message}</span>{" "}
-                  <Link to={`/admin/projects/${a.projectId}`} className="text-gold font-medium">
+                  <Link to={`/admin/projects?view=${a.projectId}`} className="text-gold font-medium">
                     {a.projectId}
                   </Link>
                   <div className="text-[11px] text-muted-foreground">

@@ -11,9 +11,17 @@ import {
   Phone,
   CheckCheck,
   Eye,
-  ChevronDown,
+  Tag,
+  Calendar,
 } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { fetchApi } from "@/lib/api";
+import ConfirmDialog from "./ConfirmDialog";
 
 export type SubmissionStatus = "New" | "Read" | "Responded";
 
@@ -41,7 +49,6 @@ const STATUS_STYLES: Record<SubmissionStatus, string> = {
 
 const FILTERS: (SubmissionStatus | "All")[] = ["All", "New", "Read", "Responded"];
 
-/** Normalize a Nigerian phone number to an international wa.me target. */
 function waLink(phone: string) {
   const digits = phone.replace(/\D/g, "");
   let intl = digits;
@@ -59,7 +66,8 @@ const Submissions = () => {
   const queryClient = useQueryClient();
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("All");
   const [search, setSearch] = useState("");
-  const [openId, setOpenId] = useState<string | null>(null);
+  const [viewSub, setViewSub] = useState<Submission | null>(null);
+  const [deleteId, setDeleteId] = useState<string | null>(null);
 
   const { data, isLoading, isError } = useQuery<SubmissionsResponse>({
     queryKey: ["submissions"],
@@ -76,10 +84,17 @@ const Submissions = () => {
   });
 
   const remove = useMutation({
-    mutationFn: (id: string) =>
-      fetchApi(`/api/admin/submissions/${id}`, { method: "DELETE" }),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["submissions"] }),
+    mutationFn: (id: string) => fetchApi(`/api/admin/submissions/${id}`, { method: "DELETE" }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["submissions"] });
+      setDeleteId(null);
+    },
   });
+
+  const open = (s: Submission) => {
+    setViewSub(s);
+    if (s.status === "New") setStatus.mutate({ id: s.id, status: "Read" });
+  };
 
   const all = data?.submissions ?? [];
   const term = search.trim().toLowerCase();
@@ -93,13 +108,6 @@ const Submissions = () => {
     return matchesFilter && matchesSearch;
   });
 
-  const toggle = (s: Submission) => {
-    const next = openId === s.id ? null : s.id;
-    setOpenId(next);
-    // Opening a New submission marks it Read.
-    if (next && s.status === "New") setStatus.mutate({ id: s.id, status: "Read" });
-  };
-
   return (
     <div>
       {/* Header */}
@@ -107,9 +115,7 @@ const Submissions = () => {
         <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center">
           <Inbox className="w-4 h-4 text-gold" />
         </div>
-        <h1 className="text-xl md:text-2xl font-display font-bold text-foreground">
-          Contact Submissions
-        </h1>
+        <h1 className="text-xl md:text-2xl font-display font-bold text-foreground">Contact Submissions</h1>
       </div>
       <p className="text-muted-foreground text-sm mb-6 ml-12">
         Quote requests sent from the website contact form.
@@ -151,9 +157,7 @@ const Submissions = () => {
         </div>
       )}
       {isError && (
-        <p className="text-destructive text-sm py-10 text-center">
-          Failed to load submissions. Please refresh.
-        </p>
+        <p className="text-destructive text-sm py-10 text-center">Failed to load submissions. Please refresh.</p>
       )}
       {!isLoading && !isError && rows.length === 0 && (
         <div className="text-center py-20 text-muted-foreground">
@@ -164,106 +168,143 @@ const Submissions = () => {
 
       {/* List */}
       {!isLoading && rows.length > 0 && (
-        <div className="space-y-2">
-          {rows.map((s) => {
-            const open = openId === s.id;
-            return (
-              <div
-                key={s.id}
-                className="bg-background border border-border rounded-xl overflow-hidden"
-              >
-                <button
-                  onClick={() => toggle(s)}
-                  className="w-full flex items-center gap-3 p-4 text-left hover:bg-muted/40 transition-colors"
-                >
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-2">
-                      <span className="font-semibold text-foreground text-sm truncate">
-                        {s.name}
-                      </span>
-                      <span
-                        className={`shrink-0 inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-semibold ${STATUS_STYLES[s.status]}`}
-                      >
-                        {s.status}
-                      </span>
-                    </div>
-                    <p className="text-xs text-muted-foreground mt-0.5 truncate">
-                      {s.serviceNeeded || "General enquiry"} · {fmt(s.createdAt)}
-                    </p>
-                  </div>
-                  <ChevronDown
-                    className={`w-4 h-4 text-muted-foreground shrink-0 transition-transform ${open ? "rotate-180" : ""}`}
-                  />
-                </button>
-
-                {open && (
-                  <div className="border-t border-border p-4 space-y-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                      <a
-                        href={`mailto:${s.email}`}
-                        className="flex items-center gap-2 text-foreground hover:text-gold transition-colors"
-                      >
-                        <Mail className="w-4 h-4 text-muted-foreground" />
-                        {s.email}
-                      </a>
-                      <span className="flex items-center gap-2 text-foreground">
-                        <Phone className="w-4 h-4 text-muted-foreground" />
-                        {s.phone || "—"}
-                      </span>
-                    </div>
-
-                    <div className="bg-muted/40 rounded-lg p-4 text-sm text-foreground/80 leading-relaxed whitespace-pre-wrap">
-                      {s.message}
-                    </div>
-
-                    <div className="flex flex-wrap gap-2">
-                      {s.phone && (
-                        <a
-                          href={waLink(s.phone)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={() => setStatus.mutate({ id: s.id, status: "Responded" })}
-                          className="inline-flex items-center gap-2 gradient-navy text-primary-foreground px-4 py-2 rounded-lg text-xs font-semibold hover:shadow-soft transition-all"
-                        >
-                          <MessageCircle className="w-4 h-4 text-gold" />
-                          Reply on WhatsApp
-                        </a>
-                      )}
-                      <button
-                        onClick={() => setStatus.mutate({ id: s.id, status: "Responded" })}
-                        className="inline-flex items-center gap-2 bg-background border border-border text-foreground px-4 py-2 rounded-lg text-xs font-semibold hover:border-gold/30 transition-all"
-                      >
-                        <CheckCheck className="w-4 h-4" />
-                        Mark Responded
-                      </button>
-                      {s.status !== "Read" && (
-                        <button
-                          onClick={() => setStatus.mutate({ id: s.id, status: "Read" })}
-                          className="inline-flex items-center gap-2 bg-background border border-border text-foreground px-4 py-2 rounded-lg text-xs font-semibold hover:border-gold/30 transition-all"
-                        >
-                          <Eye className="w-4 h-4" />
-                          Mark Read
-                        </button>
-                      )}
-                      <button
-                        onClick={() => {
-                          if (confirm("Delete this submission permanently?")) remove.mutate(s.id);
-                        }}
-                        className="inline-flex items-center gap-2 bg-background border border-border text-destructive px-4 py-2 rounded-lg text-xs font-semibold hover:border-destructive/40 transition-all ml-auto"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                        Delete
-                      </button>
-                    </div>
-                  </div>
-                )}
+        <div className="bg-background border border-border rounded-2xl overflow-hidden divide-y divide-border">
+          {rows.map((s) => (
+            <button
+              key={s.id}
+              onClick={() => open(s)}
+              className="w-full text-left flex items-center gap-3 p-4 hover:bg-muted/40 transition-colors"
+            >
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center gap-2">
+                  <span className="font-semibold text-foreground text-sm truncate">{s.name}</span>
+                  <span
+                    className={`shrink-0 inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-semibold ${STATUS_STYLES[s.status]}`}
+                  >
+                    {s.status}
+                  </span>
+                </div>
+                <p className="text-xs text-muted-foreground mt-0.5 truncate">
+                  {s.serviceNeeded || "General enquiry"} · {fmt(s.createdAt)}
+                </p>
               </div>
-            );
-          })}
+              <Eye className="w-4 h-4 text-muted-foreground shrink-0" />
+            </button>
+          ))}
         </div>
       )}
+
+      {/* View modal */}
+      <Dialog open={!!viewSub} onOpenChange={(o) => !o && setViewSub(null)}>
+        <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
+          {viewSub && (
+            <>
+              <DialogHeader>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span
+                    className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${STATUS_STYLES[viewSub.status]}`}
+                  >
+                    {viewSub.status}
+                  </span>
+                </div>
+                <DialogTitle className="font-display text-xl">{viewSub.name}</DialogTitle>
+              </DialogHeader>
+
+              <div className="space-y-2.5">
+                <Meta icon={Mail} label="Email">
+                  <a href={`mailto:${viewSub.email}`} className="text-foreground hover:text-gold transition-colors break-all">
+                    {viewSub.email}
+                  </a>
+                </Meta>
+                <Meta icon={Phone} label="Phone">
+                  <span className="text-foreground">{viewSub.phone || "—"}</span>
+                </Meta>
+                <Meta icon={Tag} label="Service">
+                  <span className="text-foreground">{viewSub.serviceNeeded || "General enquiry"}</span>
+                </Meta>
+                <Meta icon={Calendar} label="Received">
+                  <span className="text-foreground">{fmt(viewSub.createdAt)}</span>
+                </Meta>
+              </div>
+
+              <div>
+                <h3 className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1.5">
+                  Message
+                </h3>
+                <div className="bg-muted/40 rounded-lg p-4 text-sm text-foreground/80 leading-relaxed whitespace-pre-wrap">
+                  {viewSub.message}
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {viewSub.phone && (
+                  <a
+                    href={waLink(viewSub.phone)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setStatus.mutate({ id: viewSub.id, status: "Responded" })}
+                    className="inline-flex items-center gap-2 gradient-navy text-primary-foreground px-4 py-2 rounded-lg text-xs font-semibold hover:shadow-soft transition-all"
+                  >
+                    <MessageCircle className="w-4 h-4 text-gold" />
+                    Reply on WhatsApp
+                  </a>
+                )}
+                <button
+                  onClick={() => setStatus.mutate({ id: viewSub.id, status: "Responded" })}
+                  className="inline-flex items-center gap-2 bg-background border border-border text-foreground px-4 py-2 rounded-lg text-xs font-semibold hover:border-gold/30 transition-all"
+                >
+                  <CheckCheck className="w-4 h-4" />
+                  Mark Responded
+                </button>
+                <button
+                  onClick={() => {
+                    const id = viewSub.id;
+                    setViewSub(null);
+                    setDeleteId(id);
+                  }}
+                  className="inline-flex items-center gap-2 bg-background border border-border text-destructive px-4 py-2 rounded-lg text-xs font-semibold hover:border-destructive/40 transition-all ml-auto"
+                >
+                  <Trash2 className="w-4 h-4" />
+                  Delete
+                </button>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* Delete confirm */}
+      <ConfirmDialog
+        open={!!deleteId}
+        onOpenChange={(o) => !o && setDeleteId(null)}
+        title="Delete submission?"
+        description="This message will be permanently removed."
+        confirmLabel="Delete"
+        loading={remove.isPending}
+        onConfirm={() => deleteId && remove.mutate(deleteId)}
+      />
     </div>
   );
 };
+
+const Meta = ({
+  icon: Icon,
+  label,
+  children,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  children: React.ReactNode;
+}) => (
+  <div className="flex items-center gap-3 text-sm">
+    <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center shrink-0">
+      <Icon className="w-4 h-4 text-gold" />
+    </div>
+    <div className="min-w-0">
+      <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">{label}</p>
+      {children}
+    </div>
+  </div>
+);
 
 export default Submissions;

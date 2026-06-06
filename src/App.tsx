@@ -13,8 +13,6 @@ import AdminLayout from "./pages/admin/AdminLayout";
 import RequireAuth from "./pages/admin/RequireAuth";
 import Overview from "./pages/admin/Overview";
 import Projects from "./pages/admin/Projects";
-import ProjectForm from "./pages/admin/ProjectForm";
-import ProjectDetail from "./pages/admin/ProjectDetail";
 import Submissions from "./pages/admin/Submissions";
 import Settings from "./pages/admin/Settings";
 
@@ -47,9 +45,6 @@ const App = () => (
         >
           <Route index element={<Overview />} />
           <Route path="projects" element={<Projects />} />
-          <Route path="projects/new" element={<ProjectForm />} />
-          <Route path="projects/:projectId" element={<ProjectDetail />} />
-          <Route path="projects/:projectId/edit" element={<ProjectForm />} />
           <Route path="submissions" element={<Submissions />} />
           <Route path="settings" element={<Settings />} />
         </Route>
