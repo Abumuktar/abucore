@@ -7,10 +7,7 @@ import express from "express";
 import track from "./api/track";
 import contact from "./api/contact";
 import publicSettings from "./api/settings";
-import login from "./api/auth/login";
-import me from "./api/auth/me";
-import logout from "./api/auth/logout";
-import changePassword from "./api/auth/change-password";
+import auth from "./api/auth/[action]";
 import submissionsList from "./api/admin/submissions/index";
 import submissionById from "./api/admin/submissions/[id]";
 import projectsList from "./api/admin/projects/index";
@@ -46,10 +43,7 @@ app.get("/api/track", wrap(track));
 app.post("/api/contact", wrap(contact));
 app.get("/api/settings", wrap(publicSettings));
 
-app.post("/api/auth/login", wrap(login));
-app.get("/api/auth/me", wrap(me));
-app.post("/api/auth/logout", wrap(logout));
-app.post("/api/auth/change-password", wrap(changePassword));
+app.all("/api/auth/:action", wrap(auth));
 
 app.get("/api/admin/submissions", wrap(submissionsList));
 app.all("/api/admin/submissions/:id", wrap(submissionById));
